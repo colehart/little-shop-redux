@@ -1,8 +1,8 @@
-ENV["RACK_ENV"] ||= "test"
+ENV['RACK_ENV'] = 'test'
 
 require 'bundler'
 Bundler.require(:default, :test)
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 
 require 'capybara/dsl'
 require 'rspec'
