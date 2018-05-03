@@ -1,21 +1,29 @@
 RSpec.describe 'A user visits merchants page' do
-  it 'they see a headline of merchants' do
+  it 'shows a headline of merchants' do
     visit '/merchants'
 
     expect(page).to have_content('Merchants')
   end
 
-  it 'they see a list of merchant names' do
+  it 'shows a list of merchant names' do
     Merchant.create(name: 'Cole')
     visit '/merchants'
 
     expect(page).to have_content('Cole')
   end
 
-  it 'they can click on create a new merchant' do
+  it 'can direct to create a new merchant page' do
     visit '/merchants'
 
     click_link('Create A New Merchant')
     expect(current_path).to eq('/merchants/new')
+  end
+
+  it 'can direct to edit merchant page' do
+    Merchant.create(name: 'Cole')
+    visit '/merchants'
+
+    click_link('Edit')
+    expect(current_path).to eq('/merchants/1/edit')
   end
 end
