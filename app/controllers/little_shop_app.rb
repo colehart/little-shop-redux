@@ -11,5 +11,6 @@ class LittleShopApp < Sinatra::Base
 
   post '/merchants' do
     @merchant = Merchant.create(name: params[:name])
+    redirect '/merchants'
   end
 end
