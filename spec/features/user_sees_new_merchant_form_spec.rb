@@ -9,7 +9,7 @@ RSpec.describe 'A user sees new merchant page' do
   it 'they can create new merchant' do
     visit '/merchants/new'
 
-    fill_in('merchant[name]', with: 'Steven Tyler')
+    fill_in('name', with: 'Steven Tyler')
     click_button('Create Merchant')
     merchant = Merchant.first
     expect(merchant.name).to eq('Steven Tyler')
