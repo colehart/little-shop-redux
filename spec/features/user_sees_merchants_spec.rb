@@ -7,7 +7,7 @@ RSpec.describe 'A user visits merchants page' do
     end
 
     it 'they see a list of merchant names' do
-      Merchant.create(name: 'Cole', merchant_id: 1)
+      Merchant.create(name: 'Cole')
       visit '/merchants'
 
       expect(page).to have_content('Cole')
