@@ -12,5 +12,12 @@ RSpec.describe 'A user visits merchants page' do
 
       expect(page).to have_content('Cole')
     end
+
+    it 'they can click on create a new merchant' do
+      visit '/merchants'
+
+      click_link('Create A New Merchant')
+      expect(current_path).to eq('/merchants/new')
+    end
   end
 end
