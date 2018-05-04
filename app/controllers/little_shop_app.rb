@@ -17,7 +17,8 @@ class LittleShopApp < Sinatra::Base
   end
 
   put '/merchants/:id' do
-    Merchant.update(id, params[:name])
+    merchant = Merchant.find(params['id'])
+    merchant.update(params['merchant'])
   end
 
   get '/merchants/:id/edit' do
