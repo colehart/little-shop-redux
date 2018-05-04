@@ -6,7 +6,7 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-activerecord'
 
 group :development, :test do
-  gem 'capybara'
+  gem 'capybara' #, '~> 2.x.x'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'pry'

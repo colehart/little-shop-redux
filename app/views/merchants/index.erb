@@ -1,0 +1,11 @@
+<h1>Merchants</h1>
+<a href="/merchants/new" class="button">Create A New Merchant</a>
+
+<% @merchants.each do |merchant| %>
+  <h3><a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a></h3>
+  <a href="/merchants/<%= merchant.id  %>/edit">Edit</a>
+  <form action="/merchants/<%= merchant.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete"/>
+  </form>
+<% end %>

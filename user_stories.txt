@@ -1,0 +1,17 @@
+Iteration 1: (OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES shotgun)
+
+As a user,
+when I visit the little shop website,
+I see a navigation bar with Merchants, Items and Invoices
+
+when I click on merchants on the nav bar,
+I see all the merchants
+
+when I click on the edit button
+I see a form where I can edit a merchant name
+
+when I click on the delete button
+I see the merchant go away
+
+when I click on "create a new merchant"
+I see a form to enter a name and a submit button
