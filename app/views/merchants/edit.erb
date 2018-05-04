@@ -1,1 +1,9 @@
 <h1> Edit <%= @merchant.name %></h1>
+
+<form class='edit-merchant' action='/merchants/<%= @merchant.id %>' method='post'>
+  <input type="hidden" name="_method" value="PUT">
+  <p> Name: </p>
+  <input type='text' name='name' placeholder='Name'>
+  <input type='submit' value='Update Merchant'>
+</form>
+<a href='/merchants'><button>Cancel</button></a>

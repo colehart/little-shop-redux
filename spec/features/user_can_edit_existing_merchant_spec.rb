@@ -8,12 +8,17 @@ RSpec.describe 'A user can edit a merchant' do
 
     expect(page).to have_content("Edit #{name}")
   end
-#
-  it 'they see a list of merchant names' do
-    Merchant.create(name: 'Cole')
-    visit '/merchants'
 
-    expect(page).to have_content('Cole')
+  it 'they can edit a merchant name' do
+    name = 'Cole'
+    merchant = Merchant.create(name: name)
+    path = "/merchants/#{merchant.id}/edit"
+    visit path
+
+    fill_in('name', with: 'Steven Tyler')
+    click_button('Update Merchant')
+    merchant = Merchant.first
+    expect(merchant.name).to eq('Steven Tyler')
   end
 #
 #   it 'they can click on create a new merchant' do
