@@ -26,4 +26,21 @@ RSpec.describe 'A user visits merchants page' do
     click_link('Edit')
     expect(current_path).to eq('/merchants/1/edit')
   end
+
+  it 'can delete a merchant' do
+    Merchant.create(name: 'Cole')
+    visit '/merchants'
+
+    click_button('Delete')
+    expect(page).to_not have_content('Cole')
+    expect(Merchant.count).to eq(0)
+  end
+
+  it 'can view one merchant' do
+    merchant = Merchant.create(name: 'Manoj')
+    visit '/merchants'
+
+    click_link(merchant.name)
+    expect(current_path).to eq("/merchants/#{merchant.id}")
+  end
 end
