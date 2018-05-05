@@ -18,7 +18,7 @@ item_csv.each do |line|
                    name: line[:name],
                    description: line[:description],
                    unit_price: line[:unit_price],
-                   image: '../data/placeholder.jpg',
+                   image: 'http://s.newsweek.com/sites/www.newsweek.com/files/styles/lg/public/2011/10/16/1337256000000.cached_19.jpg',
                    created_at: line[:created_at],
                    updated_at: line[:updated_at])
 end
