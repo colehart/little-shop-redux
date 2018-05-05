@@ -1,0 +1,6 @@
+<h1>Items</h1>
+<a href="/items/new" class="button">Create A New Item</a>
+
+<% @items.each do |item| %>
+  <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
+<% end %>
