@@ -1,0 +1,13 @@
+<h1> Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
+
+<form class='edit-invoice' action='/invoices/<%= @invoice.id %>' method='post'>
+  <input type="hidden" name="_method" value="PUT">
+  <p>Merchant:</p>
+  <%# inactive drop down box populated with merchant_id %>
+  <p>Status:</p>
+  <%# inactive drop down box populated with merchant_id %>
+  <input type='text' name='invoice[id]' placeholder='Name'>
+  <input type='submit' value='Update Invoice'>
+</form>
+<a href='/invoices'><button>Cancel</button></a>
+<%# table of invoice items %>
