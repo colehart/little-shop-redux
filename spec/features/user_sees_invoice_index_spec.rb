@@ -31,11 +31,12 @@ RSpec.describe 'A user visits invoices page' do
   #   expect(Merchant.count).to eq(0)
   # end
   #
-  # it 'can view one merchant' do
-  #   merchant = Merchant.create(name: 'Manoj')
-  #   visit '/merchants'
-  #
-  #   click_link(merchant.name)
-  #   expect(current_path).to eq("/merchants/#{merchant.id}")
-  # end
+  it 'can view one invoice' do
+    invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+
+    visit '/invoices'
+
+    click_link(invoice.id)
+    expect(current_path).to eq("/invoices/#{invoice.id}")
+  end
 end

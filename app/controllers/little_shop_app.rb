@@ -41,4 +41,20 @@ class LittleShopApp < Sinatra::Base
     @invoices = Invoice.all
     erb :"invoices/index"
   end
+
+  get '/invoices/:id' do
+    @invoices = Invoice.find(params['id'])
+    erb :"invoices/invoice_page"
+  end
+
+  put '/invoices/:id' do
+    invoice = Invoice.find(params['id'])
+    invoice.update(params['invoice'])
+    redirect '/invoices'
+  end
+
+  get '/invoices/:id/edit' do
+    @invoice = Invoice.find(params[:id])
+    erb :'/invoices/edit'
+  end
 end
