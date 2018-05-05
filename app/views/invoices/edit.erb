@@ -6,7 +6,7 @@
   <%# inactive drop down box populated with merchant_id %>
   <p>Status:</p>
   <%# inactive drop down box populated with merchant_id %>
-  <input type='text' name='invoice[id]' placeholder='Name'>
+  <input type='dropdown' name='invoice[id]' placeholder='<%= @invoice.status %>'>
   <input type='submit' value='Update Invoice'>
 </form>
 <a href='/invoices'><button>Cancel</button></a>

@@ -18,7 +18,7 @@ class LittleShopApp < Sinatra::Base
 
   get '/merchants/:id' do
     @merchant = Merchant.find(params['id'])
-    erb :"merchants/merch_page"
+    erb :"merchants/show"
   end
 
   get '/merchants/:id/edit' do
@@ -44,7 +44,7 @@ class LittleShopApp < Sinatra::Base
 
   get '/invoices/:id' do
     @invoice = Invoice.find(params['id'])
-    erb :"invoices/invoice_page"
+    erb :"invoices/show"
   end
 
   get '/invoices/:id/edit' do
