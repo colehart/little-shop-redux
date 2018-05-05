@@ -9,7 +9,7 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'shows a list of invoice names' do
-    invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+    invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
 
@@ -17,7 +17,7 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'can view one invoice' do
-    invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+    invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
 
@@ -26,7 +26,7 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'can direct to edit invoice page' do
-    Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+    Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
 
@@ -35,7 +35,7 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'can delete an invoice' do
-    invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+    invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
 
