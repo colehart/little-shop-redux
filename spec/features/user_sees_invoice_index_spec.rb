@@ -6,27 +6,21 @@ RSpec.describe 'A user visits invoices page' do
     expect(page).to have_content('Invoices')
   end
 
-  # it 'shows a list of merchant names' do
-  #   Merchant.create(name: 'Cole')
-  #   visit '/merchants'
-  #
-  #   expect(page).to have_content('Cole')
-  # end
-  #
-  # it 'can direct to create a new merchant page' do
-  #   visit '/merchants'
-  #
-  #   click_link('Create A New Merchant')
-  #   expect(current_path).to eq('/merchants/new')
-  # end
-  #
-  # it 'can direct to edit merchant page' do
-  #   Merchant.create(name: 'Cole')
-  #   visit '/merchants'
-  #
-  #   click_link('Edit')
-  #   expect(current_path).to eq('/merchants/1/edit')
-  # end
+  it 'shows a list of invoice names' do
+    invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+
+    visit '/invoices'
+
+    expect(page).to have_content(invoice.id)
+  end
+
+  it 'can direct to edit invoice page' do
+    Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
+    visit '/invoices'
+
+    click_link('Edit')
+    expect(current_path).to eq('/invoices/1/edit')
+  end
   #
   # it 'can delete a merchant' do
   #   Merchant.create(name: 'Cole')
