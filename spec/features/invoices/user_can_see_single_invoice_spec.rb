@@ -1,5 +1,6 @@
 RSpec.describe 'A user can see one invoice' do
   it 'shows a page with one invoice' do
+    Merchant.create(name: 'Cole')
     invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
     visit "/invoices/#{invoice.id}"
 
@@ -8,6 +9,7 @@ RSpec.describe 'A user can see one invoice' do
   end
 
   it 'shows edit button that redirects to edit invoice' do
+    Merchant.create(name: 'Cole')
     invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
     visit "/invoices/#{invoice.id}"
 
@@ -16,6 +18,7 @@ RSpec.describe 'A user can see one invoice' do
   end
 
   it 'shows delete button that destroys invoice and redirects to index' do
+    Merchant.create(name: 'Cole')
     invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
     visit "/invoices/#{invoice.id}"
 
@@ -23,7 +26,7 @@ RSpec.describe 'A user can see one invoice' do
     expect(current_path).to eq('/invoices')
     expect(page).to_not have_content(invoice)
   end
-=begin
+
   it 'shows merchant name of invoice' do
     merchant = Merchant.create(name: 'Cole')
     invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
@@ -32,5 +35,4 @@ RSpec.describe 'A user can see one invoice' do
 
     expect(page).to have_content(merchant.name)
   end
-=end
 end

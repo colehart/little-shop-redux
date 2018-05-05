@@ -3,11 +3,16 @@
 <form class='edit-invoice' action='/invoices/<%= @invoice.id %>' method='post'>
   <input type="hidden" name="_method" value="PUT">
   <p>Merchant:</p>
-  <%# inactive drop down box populated with merchant_id %>
+  <select class="merchant-dropdown" name="Merchants" disabled = true>
+    <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
+  </select>
   <p>Status:</p>
-  <%# inactive drop down box populated with merchant_id %>
-  <input type='dropdown' name='invoice[id]' placeholder='<%= @invoice.status %>'>
+  <select class='status-dropdown' name='Status'>
+    <option value='pending'>Pending</option>
+    <option value='shipped'>Shipped</option>
+    <option value='returned'>Returned</option>
+  </select>
+  <a href='/invoices'><button>Cancel</button></a>
   <input type='submit' value='Update Invoice'>
 </form>
-<a href='/invoices'><button>Cancel</button></a>
 <%# table of invoice items %>

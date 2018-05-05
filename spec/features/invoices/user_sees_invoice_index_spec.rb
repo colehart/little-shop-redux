@@ -17,6 +17,7 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'can view one invoice' do
+    Merchant.create(name: 'Cole')
     invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
@@ -26,6 +27,7 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'can direct to edit invoice page' do
+    Merchant.create(name: 'Cole')
     Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
