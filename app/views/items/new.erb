@@ -1,1 +1,7 @@
 <h1>Create New Item</h1>
+  <p>Merchant</p>
+  <select class="merchant-dropdown" name="Merchants">
+  <% @merchants.each do |merchant| %>
+    <option value="<%= merchant.id %>"><%= merchant.name %></option>
+    <% end %>
+  </select>

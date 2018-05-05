@@ -4,4 +4,33 @@ RSpec.describe 'A user visits create new item page' do
 
     expect(page).to have_content('Create New Item')
   end
+
+  it 'shows a merchant drop down menu' do
+    merchant1 = Merchant.create(name: 'Borks R Us')
+    merchant2 = Merchant.create(name: 'Borker King')
+    visit '/items/new'
+
+    within('.merchant-dropdown') do
+      expect(page).to have_content(merchant1.name)
+      expect(page).to have_content(merchant2.name)
+    end
+  end
+
+  it 'creates a new item' do
+    merchant1 = Merchant.create(name: 'Borks R Us')
+    visit '/items/new'
+
+    within('.merchant-dropdown') do
+      find("option[value='#{merchant1.id}'").click
+    end
+    fill_in('name', with: 'Steven Tyler')
+    fill_in('description', with:'Super great action doll!')
+    fill_in('unit_price', with: 1_000_000)
+    fill_in('image', with:'image.jpeg')
+
+    click_button('Create Item')
+
+    item = Item.first
+    expect(item.name).to eq('Steven Tyler')
+  end
 end
