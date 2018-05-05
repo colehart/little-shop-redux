@@ -2,6 +2,7 @@
 class Item < ActiveRecord::Base
   validates_presence_of :title,
                         :description,
-                        :unit_price
+                        :unit_price,
+                        :image
 
 end
