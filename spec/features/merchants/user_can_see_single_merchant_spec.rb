@@ -18,7 +18,7 @@ RSpec.describe 'A user can see one merchant' do
     merchant = Merchant.create(name: 'Cole')
     visit "/merchants/#{merchant.id}"
 
-    click_link('Delete')
+    click_button('Delete')
     expect(current_path).to eq('/merchants')
     expect(page).to_not have_content(merchant)
   end

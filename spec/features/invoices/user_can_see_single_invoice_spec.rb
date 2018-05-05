@@ -3,7 +3,8 @@ RSpec.describe 'A user can see one invoice' do
     invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
     visit "/invoices/#{invoice.id}"
 
-    expect(page).to have_content(invoice.name)
+    expect(page).to have_content(invoice.id)
+    expect(page).to have_content(invoice.status.capitalize)
   end
 
   it 'shows edit button that redirects to edit invoice' do
@@ -18,7 +19,7 @@ RSpec.describe 'A user can see one invoice' do
     invoice = Invoice.create(customer_id: 1, merchant_id: 3434, status: 'shipped')
     visit "/invoices/#{invoice.id}"
 
-    click_link('Delete')
+    click_button('Delete')
     expect(current_path).to eq('/invoices')
     expect(page).to_not have_content(invoice)
   end
