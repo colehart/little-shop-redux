@@ -10,6 +10,5 @@ RSpec.describe 'A user visits a single item page' do
     expect(page).to have_content(merchant.name)
     expect(page).to have_content(item.description)
     expect(page).to have_content(item.description)
-
   end
 end

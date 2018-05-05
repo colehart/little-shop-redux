@@ -5,6 +5,19 @@ RSpec.describe 'A user visits items page' do
     expect(page).to have_content('Items')
   end
 
+  it 'has a link to create a new item'do
+    visit '/items'
+
+    expect(page).to have_content('Create A New Item')
+  end
+
+  it 'can direct to create a new item page' do
+    visit '/items'
+
+    click_link('Create A New Item')
+    expect(current_path).to eq('/items/new')
+  end
+
   it 'shows items' do
     item1 = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
     item2 = Item.create(name:'pork', description:'totally porked it', unit_price:667, merchant_id:2, image:'porkface.jpeg')

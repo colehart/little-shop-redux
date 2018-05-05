@@ -42,10 +42,13 @@ class LittleShopApp < Sinatra::Base
     erb :'/items/index'
   end
 
+  get '/items/new' do
+    erb :'/items/new'
+  end
+
   get '/items/:id' do
     @item = Item.find(params[:id])
     @merchant = Merchant.find(@item.merchant_id)
     erb :'/items/show'
   end
-
 end
