@@ -12,6 +12,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   post '/merchants' do
+
     @merchant = Merchant.create(name: params[:name])
     redirect '/merchants'
   end
@@ -51,5 +52,10 @@ class LittleShopApp < Sinatra::Base
     @item = Item.find(params[:id])
     @merchant = Merchant.find(@item.merchant_id)
     erb :'/items/show'
+  end
+
+  post '/items' do
+    @item = Item.create(params[:item])
+    redirect '/items'
   end
 end

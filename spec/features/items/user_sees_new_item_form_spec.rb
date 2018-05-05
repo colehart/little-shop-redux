@@ -21,12 +21,12 @@ RSpec.describe 'A user visits create new item page' do
     visit '/items/new'
 
     within('.merchant-dropdown') do
-      find("option[value='#{merchant1.id}'").click
+      find("option[value='#{merchant1.id}']").click
     end
-    fill_in('name', with: 'Steven Tyler')
-    fill_in('description', with:'Super great action doll!')
-    fill_in('unit_price', with: 1_000_000)
-    fill_in('image', with:'image.jpeg')
+    fill_in('item[name]', with: 'Steven Tyler')
+    fill_in('item[description]', with:'Super great action doll!')
+    fill_in('item[unit_price]', with: 1_000_000)
+    fill_in('item[image]', with:'image.jpeg')
 
     click_button('Create Item')
 
