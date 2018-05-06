@@ -17,10 +17,9 @@ RSpec.describe 'A user visits edit item page' do
     fill_in('item[image]', with:'image.jpeg')
     # within('.merchant-dropdown') do
     #   find("option[value='1']").click
-    # end
-
+    # end - Add more merchants, set default
+    expect(page).to have_content('totally borked it')
     click_button('Update Item')
-    # binding.pry
     item1 = Item.find(item.id)
     expect(item1.name).to eq('Steven Tyler')
     expect(item1.description).to eq('totally borked it')

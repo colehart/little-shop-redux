@@ -67,13 +67,7 @@ class LittleShopApp < Sinatra::Base
 
   put '/items/:id' do
     item = Item.find(params[:id])
-    # p = params[:item]
     item.update(params[:item])
-    # item.name = p[:name] unless p[:name] == ""
-    # item.description = p[:description] unless p[:description] == ""
-    # item.image = p[:image] unless p[:image] == ""
-    # item.merchant_id = p[:merchant_id]
-    # binding.pry
     redirect '/items'
   end
 end
