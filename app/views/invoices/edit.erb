@@ -1,0 +1,18 @@
+<h1> Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
+
+<form class='edit-invoice' action='/invoices/<%= @invoice.id %>' method='post'>
+  <input type="hidden" name="_method" value="PUT">
+  <p>Merchant:</p>
+  <select class="merchant-dropdown" name="Merchants" disabled = true>
+    <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
+  </select>
+  <p>Status:</p>
+  <select class='status-dropdown' name='invoice[status]'>
+    <option value='pending' selected>Pending</option>
+    <option value='shipped'>Shipped</option>
+    <option value='returned'>Returned</option>
+  </select>
+  <a href='/invoices'><button>Cancel</button></a>
+  <input type='submit' value='Update Invoice'>
+</form>
+<%# table of invoice items %>

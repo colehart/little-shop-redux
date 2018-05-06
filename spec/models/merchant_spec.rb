@@ -13,7 +13,3 @@ RSpec.describe Merchant do
     end
   end
 end
-
-=begin
-able to view an index of all merchants, view a page for a single merchant, create a merchant, edit a merchant, and delete a merchant from both the index and the show pages
-=end

@@ -1,0 +1,10 @@
+<h1>Invoices</h1>
+
+<% @invoices.each do |invoice| %>
+  <h3><a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a></h3>
+  <a href="/invoices/<%= invoice.id  %>/edit">Edit</a>
+  <form action="/invoices/<%= invoice.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete"/>
+  </form>
+<% end %>
