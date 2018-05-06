@@ -12,7 +12,6 @@ class LittleShopApp < Sinatra::Base
   end
 
   post '/merchants' do
-
     @merchant = Merchant.create(name: params[:name])
     redirect '/merchants'
   end
@@ -74,6 +73,7 @@ class LittleShopApp < Sinatra::Base
   delete '/items/:id' do
     Item.destroy(params[:id])
     redirect '/items'
+  end
 
   get '/invoices' do
     @invoices = Invoice.all
