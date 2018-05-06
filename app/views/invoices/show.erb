@@ -5,3 +5,19 @@
   <input type='submit' value='Delete'/>
 </form>
 <h3><a href='/merchants/<%= @merchant.name %>'><%= @merchant.name %></a></h3>
+<table>
+  <tr>
+    <th>Item ID</th>
+    <th>Item Title</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+  </tr>
+  <% @invoice_items.each do |invoice_item| %>
+  <tr>
+    <td> <a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a></td>
+    <td><%= invoice_item.item.name %></td>
+    <td><%= invoice_item.quantity %></td>
+    <td><%= invoice_item.unit_price%></td>
+  </tr>
+  <% end %>
+</table>
