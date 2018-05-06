@@ -7,10 +7,16 @@
     <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
   </select>
   <p>Status:</p>
+
+  <% statuses = ['pending', 'shipped', 'returned'] %>
   <select class='status-dropdown' name='invoice[status]'>
-    <option value='pending' selected>Pending</option>
-    <option value='shipped'>Shipped</option>
-    <option value='returned'>Returned</option>
+    <% statuses.each do |status| %>
+      <% if status == @invoice.status %>
+        <option value=<%= status %> selected><%= status.capitalize %></option>
+      <% else %>
+        <option value=<%= status %>><%= status.capitalize %></option>
+      <% end %>
+    <% end %>
   </select>
   <a href='/invoices'><button>Cancel</button></a>
   <input type='submit' value='Update Invoice'>
