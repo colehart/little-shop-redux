@@ -2,6 +2,7 @@ require 'csv'
 require './app/models/merchant.rb'
 require './app/models/item.rb'
 require './app/models/invoice.rb'
+require './app/models/invoice_item.rb'
 
 merchant_csv = CSV.read('./data/merchants.csv', headers: true, header_converters: :symbol)
 
@@ -34,4 +35,16 @@ invoice_csv.each do |line|
                   status:      line[:status],
                   created_at:  line[:created_at],
                   updated_at:  line[:updated_at])
+end
+
+invoice_item_csv = CSV.read('./data/invoice_items.csv', headers: true, header_converters: :symbol)
+
+invoice_item_csv.each do |line|
+  InvoiceItem.create!(id: line[:id],
+                   item_id: line[:item_id],
+                   invoice_id: line[:invoice_id],
+                   quantity: line[:quantity],
+                   unit_price: line[:unit_price],
+                   created_at: line[:created_at],
+                   updated_at: line[:updated_at])
 end
