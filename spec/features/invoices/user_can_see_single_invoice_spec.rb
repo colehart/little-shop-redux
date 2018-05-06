@@ -58,7 +58,7 @@ RSpec.describe 'A user can see one invoice' do
     expect(page).to have_content(invoice_item.item_id)
     expect(page).to have_content(item.name)
     expect(page).to have_content(invoice_item.quantity)
-    expect(page).to have_content(invoice_item.unit_price)
+    expect(page).to have_content(invoice_item.unit_price.to_f/100)
   end
 
   it 'shows invoice item total' do
@@ -69,7 +69,7 @@ RSpec.describe 'A user can see one invoice' do
     invoice_item = InvoiceItem.create(item_id: 1, invoice_id: 1, quantity: 3, unit_price: 1500)
     invoice_item2 = InvoiceItem.create(item_id: 2, invoice_id: 1, quantity: 2, unit_price: 1000)
 
-    total = (invoice_item.quantity * invoice_item.unit_price) + (invoice_item2.quantity * invoice_item2.unit_price)
+    total = ((invoice_item.quantity * invoice_item.unit_price.to_f) + (invoice_item2.quantity * invoice_item2.unit_price.to_f))/100
     visit "/invoices/#{invoice.id}"
 
     expect(page).to have_content(total)

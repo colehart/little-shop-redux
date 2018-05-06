@@ -1,10 +1,3 @@
-<h1>Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
-<a href='/invoices/<%= @invoice.id  %>/edit'>Edit</a>
-<form action='/invoices/<%= @invoice.id %>' method='POST'>
-  <input type='hidden' name='_method' value='DELETE'>
-  <input type='submit' value='Delete'/>
-</form>
-<h3><a href='/merchants/<%= @merchant.id %>'><%= @merchant.name %></a></h3>
 <table>
   <thead>
     <tr>
