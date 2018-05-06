@@ -20,11 +20,4 @@ RSpec.describe 'A user sees new merchant page' do
     click_link('Cancel')
     expect(current_path).to eq('/merchants')
   end
-
-  # it 'they can click on create a new merchant' do
-  #   visit '/merchants'
-  #
-  #   click_link('Create A New Merchant')
-  #   expect(current_path).to eq('/merchants/new')
-  # end
 end
