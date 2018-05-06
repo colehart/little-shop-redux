@@ -6,3 +6,8 @@
 <p><%= @item.unit_price.to_f/100 %></p>
 <p><%= @item.description %></p>
 <a href="/items/<%= @item.id %>/edit"><button>Edit</button></a>
+
+<form action="/items/<%= @item.id %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete"/>
+</form>
