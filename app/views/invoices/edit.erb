@@ -7,8 +7,8 @@
     <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
   </select>
   <p>Status:</p>
-  <select class='status-dropdown' name='Status'>
-    <option value='pending'>Pending</option>
+  <select class='status-dropdown' name='invoice[status]'>
+    <option value='pending' selected>Pending</option>
     <option value='shipped'>Shipped</option>
     <option value='returned'>Returned</option>
   </select>

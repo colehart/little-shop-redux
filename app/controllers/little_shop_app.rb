@@ -17,7 +17,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants/:id' do
-    @merchant = Merchant.find(params['id'])
+    @merchant = Merchant.find(params[:id])
     erb :"merchants/show"
   end
 
@@ -27,8 +27,8 @@ class LittleShopApp < Sinatra::Base
   end
 
   put '/merchants/:id' do
-    merchant = Merchant.find(params['id'])
-    merchant.update(params['merchant'])
+    merchant = Merchant.find(params[:id])
+    merchant.update(params[:merchant])
     redirect '/merchants'
   end
 
@@ -43,7 +43,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/invoices/:id' do
-    @invoice = Invoice.find(params['id'])
+    @invoice = Invoice.find(params[:id])
     @merchant = @invoice.merchant
     erb :"invoices/show"
   end
@@ -55,8 +55,8 @@ class LittleShopApp < Sinatra::Base
   end
 
   put '/invoices/:id' do
-    invoice = Invoice.find(params['id'])
-    invoice.update(params['invoice'])
+    invoice = Invoice.find(params[:id])
+    invoice.update(params[:invoice])
     redirect '/invoices'
   end
 
