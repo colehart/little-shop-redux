@@ -35,4 +35,16 @@ RSpec.describe 'A user can see one invoice' do
 
     expect(page).to have_content(merchant.name)
   end
+
+  it 'shows a table of invoice items' do
+    merchant = Merchant.create(name: 'Cole')
+    invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+    item = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
+    invoice_item = InvoiceItem.create(item_id: 1, invoice_id: 1, quantity: 23, unit_price: 1500)
+    visit "/invoices/#{invoice.id}"
+    expect(page).to have_content(invoice_item.item_id)
+    expect(page).to have_content(item.name)
+    expect(page).to have_content(invoice_item.quantity)
+    expect(page).to have_content(invoice_item.unit_price)
+  end
 end
