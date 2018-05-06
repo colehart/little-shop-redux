@@ -18,19 +18,19 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants/:id' do
-    @merchant = Merchant.find(params['id'])
-    erb :"merchants/merch_page"
-  end
-
-  put '/merchants/:id' do
-    merchant = Merchant.find(params['id'])
-    merchant.update(params['merchant'])
-    redirect '/merchants'
+    @merchant = Merchant.find(params[:id])
+    erb :"merchants/show"
   end
 
   get '/merchants/:id/edit' do
     @merchant = Merchant.find(params[:id])
     erb :'/merchants/edit'
+  end
+
+  put '/merchants/:id' do
+    merchant = Merchant.find(params[:id])
+    merchant.update(params[:merchant])
+    redirect '/merchants'
   end
 
   delete '/merchants/:id' do
@@ -74,5 +74,32 @@ class LittleShopApp < Sinatra::Base
   delete '/items/:id' do
     Item.destroy(params[:id])
     redirect '/items'
+
+  get '/invoices' do
+    @invoices = Invoice.all
+    erb :"invoices/index"
+  end
+
+  get '/invoices/:id' do
+    @invoice = Invoice.find(params[:id])
+    @merchant = @invoice.merchant
+    erb :"invoices/show"
+  end
+
+  get '/invoices/:id/edit' do
+    @invoice = Invoice.find(params[:id])
+    @merchant = @invoice.merchant
+    erb :'/invoices/edit'
+  end
+
+  put '/invoices/:id' do
+    invoice = Invoice.find(params[:id])
+    invoice.update(params[:invoice])
+    redirect '/invoices'
+  end
+
+  delete '/invoices/:id' do
+    Invoice.destroy(params[:id])
+    redirect '/invoices'
   end
 end
