@@ -15,7 +15,7 @@ RSpec.describe 'A user can edit an invoice' do
 
     visit "/invoices/#{invoice.id}/edit"
 
-    expect(page).to have_css('.merchant-dropdown  disabled')
+    expect(page).to have_css('select.merchant-dropdown')
   end
 
   it 'shows edit an invoice status' do
