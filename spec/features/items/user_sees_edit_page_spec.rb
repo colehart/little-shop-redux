@@ -15,17 +15,18 @@ RSpec.describe 'A user visits edit item page' do
     fill_in('item[name]', with: 'Steven Tyler')
     fill_in('item[unit_price]', with: 1_000_000)
     fill_in('item[image]', with:'image.jpeg')
-    within('.merchant-dropdown') do
-      find("option[value='1']").click
-    end
+    # within('.merchant-dropdown') do
+    #   find("option[value='1']").click
+    # end
 
     click_button('Update Item')
-
-    expect(item.name).to eq('Steven Tyler')
-    expect(item.description).to eq('totally borked it')
-    expect(item.image).to eq('image.jpeg')
-    expect(item.merchant_id).to eq(1)
-    expect(item.id).to eq(1)
+    # binding.pry
+    item1 = Item.find(item.id)
+    expect(item1.name).to eq('Steven Tyler')
+    expect(item1.description).to eq('totally borked it')
+    expect(item1.image).to eq('image.jpeg')
+    expect(item1.merchant_id).to eq(1)
+    expect(item1.id).to eq(1)
   end
 
 end
