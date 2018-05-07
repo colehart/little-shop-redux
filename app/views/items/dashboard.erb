@@ -1,0 +1,21 @@
+<h1>Items Dashboard</h1>
+
+<section class="dashboard">
+  <h3>Total Item Count</h3>
+  <h1><%= @count %></h1>
+</section>
+
+<section class="dashboard">
+  <h3>Avg Price Per Item</h3>
+  <h1>$<%= @average %></h1>
+</section>
+
+<section class="dashboard">
+  <h3>Item by Age</h3>
+  <h4>Newest</h4>
+  <p>Item:</p>
+  <a href="/items/<%= @newest.id %>" ><%= @newest.name %></a>
+  <h4>Oldest</h4>
+  <p>Item:</p>
+  <a href="/items/<%= @oldest.id %>"><%= @oldest.name %></a>
+</section>

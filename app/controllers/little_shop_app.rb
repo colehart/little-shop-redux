@@ -75,6 +75,15 @@ class LittleShopApp < Sinatra::Base
     redirect '/items'
   end
 
+  get '/items-dashboard' do
+    @count = Item.count
+    @average = Item.average(:unit_price)
+    @newest = Item.all.max_by(&:created_at)
+    @oldest = Item.all.min_by(&:created_at)
+    # require 'pry'; binding.pry
+    erb :'/items/dashboard'
+  end
+
   get '/invoices' do
     @invoices = Invoice.all.sort_by(&:id)
     erb :"invoices/index"
@@ -104,4 +113,5 @@ class LittleShopApp < Sinatra::Base
     Invoice.destroy(params[:id])
     redirect '/invoices'
   end
+
 end
