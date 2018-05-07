@@ -5,7 +5,7 @@ RSpec.describe 'A user visits items page' do
     expect(page).to have_content('Items')
   end
 
-  it 'has a link to create a new item'do
+  it 'has a link to create a new item' do
     visit '/items'
 
     expect(page).to have_content('Create A New Item')
@@ -19,21 +19,21 @@ RSpec.describe 'A user visits items page' do
   end
 
   it 'shows items' do
-    item1 = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
-    item2 = Item.create(name:'pork', description:'totally porked it', unit_price:667, merchant_id:2, image:'porkface.jpeg')
-    item3 = Item.create(name:'dork', description:'totally dorked it', unit_price:668, merchant_id:3, image:'dorkface.jpeg')
+    item1 = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: 1, image: 'borkface.jpeg')
+    item2 = Item.create(name: 'pork', description: 'totally porked it', unit_price: 667, merchant_id: 2, image: 'porkface.jpeg')
+    item3 = Item.create(name: 'dork', description: 'totally dorked it', unit_price: 668, merchant_id: 3, image: 'dorkface.jpeg')
     visit '/items'
     expect(page).to have_content(item1.name)
-    expect(page).to have_content("$#{item1.unit_price.to_f/100}")
+    expect(page).to have_content("$#{item1.unit_price.to_f / 100}")
     expect(page).to have_content(item2.name)
-    expect(page).to have_content("$#{item2.unit_price.to_f/100}")
+    expect(page).to have_content("$#{item2.unit_price.to_f / 100}")
     expect(page).to have_content(item3.name)
-    expect(page).to have_content("$#{item3.unit_price.to_f/100}")
+    expect(page).to have_content("$#{item3.unit_price.to_f / 100}")
   end
 
   it 'links to item show page' do
-    merchant = Merchant.create(name: 'hi')
-    item = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
+    Merchant.create(name: 'hi')
+    item = Item.create(name: 'bork', description: 'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
     visit '/items'
     click_link(item.name)
     expect(current_path).to eq("/items/#{item.id}")

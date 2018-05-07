@@ -76,6 +76,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items-dashboard' do
+    @count = Item.count
     erb :'/items/dashboard'
   end
 
