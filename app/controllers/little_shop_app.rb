@@ -3,7 +3,7 @@ class LittleShopApp < Sinatra::Base
   set :method_override, true
 
   get '/merchants' do
-    @merchants = Merchant.all
+    @merchants = Merchant.all.sort_by(&:id)
     erb :"merchants/index"
   end
 
@@ -38,7 +38,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items' do
-    @items = Item.all
+    @items = Item.all.sort_by(&:id)
     erb :'/items/index'
   end
 
@@ -76,19 +76,21 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/invoices' do
-    @invoices = Invoice.all
+    @invoices = Invoice.all.sort_by(&:id)
     erb :"invoices/index"
   end
 
   get '/invoices/:id' do
     @invoice = Invoice.find(params[:id])
     @merchant = @invoice.merchant
+    @invoice_items = @invoice.invoice_items
     erb :"invoices/show"
   end
 
   get '/invoices/:id/edit' do
     @invoice = Invoice.find(params[:id])
     @merchant = @invoice.merchant
+    @invoice_items = @invoice.invoice_items
     erb :'/invoices/edit'
   end
 
