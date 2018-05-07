@@ -39,4 +39,10 @@ RSpec.describe 'A user visits items page' do
     expect(current_path).to eq("/items/#{item.id}")
   end
 
+  it 'links to item dashboard page' do
+    visit '/items'
+
+    click_link('Dashboard')
+    expect(current_path).to eq('/items-dashboard')
+  end
 end
