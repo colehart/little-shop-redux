@@ -1,6 +1,6 @@
 <h1> Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
 
-<form class='edit-invoice' action='/invoices/<%= @invoice.id %>' method='post'>
+<form class="edit-invoice" action="/invoices/<%= @invoice.id %>" method="post">
   <input type="hidden" name="_method" value="PUT">
   <p>Merchant:</p>
   <select class="merchant-dropdown" name="Merchants" disabled = true>
@@ -8,8 +8,8 @@
   </select>
   <p>Status:</p>
 
-  <% statuses = ['pending', 'shipped', 'returned'] %>
-  <select class='status-dropdown' name='invoice[status]'>
+  <% statuses = ["pending", "shipped", "returned"] %>
+  <select class="status-dropdown" name="invoice[status]">
     <% statuses.each do |status| %>
       <% if status == @invoice.status %>
         <option value=<%= status %> selected><%= status.capitalize %></option>
@@ -18,8 +18,8 @@
       <% end %>
     <% end %>
   </select>
-  <a href='/invoices'><button>Cancel</button></a>
-  <input type='submit' value='Update Invoice'>
+  <a href="/invoices"><button>Cancel</button></a>
+  <input type="submit" value="Update Invoice">
 </form>
 
 <table>

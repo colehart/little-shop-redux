@@ -5,7 +5,7 @@
   <input type="submit" value="Delete"/>
 </form>
 
-<h3><a href='/merchants/<%= @merchant.id %>'><%= @merchant.name %></a></h3>
+<h3><a href="/merchants/<%= @merchant.id %>"><%= @merchant.name %></a></h3>
 <img src="<%= @item.image %>" alt="">
 <h3><%= @item.name %></h3>
 <p><%= @item.unit_price.to_f/100 %></p>
