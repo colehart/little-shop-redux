@@ -40,6 +40,8 @@ RSpec.describe 'A user visits items page' do
   end
 
   it 'links to item dashboard page' do
+    merchant = Merchant.create(name: 'borks r us')
+    Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
     visit '/items'
 
     click_link('Dashboard')

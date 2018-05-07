@@ -78,8 +78,9 @@ class LittleShopApp < Sinatra::Base
   get '/items-dashboard' do
     @count = Item.count
     @average = Item.average(:unit_price)
-    @newest = Item.where(created_at: Item.maximum(:created_at))
-    @oldest = Item.where(created_at: Item.minimum(:created_at))
+    @newest = Item.all.max_by(&:created_at)
+    @oldest = Item.all.min_by(&:created_at)
+    # require 'pry'; binding.pry
     erb :'/items/dashboard'
   end
 
