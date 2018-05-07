@@ -14,8 +14,8 @@
   <h3>Item by Age</h3>
   <h4>Newest</h4>
   <p>Item:</p>
-  <a href="/item/:id"><%= @newest.name %></a>
+  <a href="/items/<%= @newest.id %>" ><%= @newest.name %></a>
   <h4>Oldest</h4>
   <p>Item:</p>
-  <a href="/item/:id"><%= @oldest.name %></a>
+  <a href="/items/<%= @oldest.id %>"><%= @oldest.name %></a>
 </section>

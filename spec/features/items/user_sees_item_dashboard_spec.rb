@@ -26,12 +26,33 @@ RSpec.describe 'A user visits items page' do
     expect(page).to have_content(Item.average(:unit_price))
   end
 
-  it 'shows average price per item' do
+  it 'shows item by age' do
     merchant = Merchant.create(name: 'borks r us')
     item1 = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
     item2 = Item.create(name: 'gork', description: 'totally gorked it', unit_price: 666, merchant_id: merchant.id, image: 'gorkface.jpeg', created_at: '2016-01-11 11:51:37 UTC')
     visit '/items-dashboard'
+
     expect(page).to have_content(item2.name)
     expect(page).to have_content(item1.name)
+  end
+
+  it 'links to the newest item' do
+    merchant = Merchant.create(name: 'borks r us')
+    item1 = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
+    item2 = Item.create(name: 'gork', description: 'totally gorked it', unit_price: 666, merchant_id: merchant.id, image: 'gorkface.jpeg', created_at: '2016-01-11 11:51:37 UTC')
+    visit '/items-dashboard'
+
+    click_link("#{item1.name}")
+    expect(current_path).to eq("/items/#{item1.id}")
+  end
+
+  it 'links to the oldest item' do
+    merchant = Merchant.create(name: 'borks r us')
+    item1 = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
+    item2 = Item.create(name: 'gork', description: 'totally gorked it', unit_price: 666, merchant_id: merchant.id, image: 'gorkface.jpeg', created_at: '2016-01-11 11:51:37 UTC')
+    visit '/items-dashboard'
+
+    click_link("#{item2.name}")
+    expect(current_path).to eq("/items/#{item2.id}")
   end
 end
