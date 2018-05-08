@@ -6,10 +6,11 @@ RSpec.describe 'A user visits merchants page' do
   end
 
   it 'shows a list of merchant names' do
-    Merchant.create(name: 'Cole')
+    name = 'Cole'
+    Merchant.create(name: name)
     visit '/merchants'
 
-    expect(page).to have_content('Cole')
+    expect(page).to have_content(name)
   end
 
   it 'can direct to create a new merchant page' do
@@ -20,11 +21,11 @@ RSpec.describe 'A user visits merchants page' do
   end
 
   it 'can direct to edit merchant page' do
-    Merchant.create(name: 'Cole')
+    merchant = Merchant.create(name: 'Cole')
     visit '/merchants'
 
     click_link('Edit')
-    expect(current_path).to eq('/merchants/1/edit')
+    expect(current_path).to eq("/merchants/#{merchant.id}/edit")
   end
 
   it 'can delete a merchant' do

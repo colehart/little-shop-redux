@@ -9,14 +9,14 @@ RSpec.describe 'A user can edit a merchant' do
   end
 
   it 'they can edit a merchant name' do
-    name = 'Cole'
-    merchant = Merchant.create(name: name)
+    merchant = Merchant.create(name: 'Cole')
     path = "/merchants/#{merchant.id}/edit"
     visit path
 
-    fill_in('merchant[name]', with: 'Steven Tyler')
+    new_name = 'Steven Tyler'
+    fill_in('merchant[name]', with: new_name)
     click_button('Update Merchant')
     merchant = Merchant.first
-    expect(merchant.name).to eq('Steven Tyler')
+    expect(merchant.name).to eq(new_name)
   end
 end
