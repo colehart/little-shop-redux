@@ -5,13 +5,19 @@ class Merchant < ActiveRecord::Base
   has_many :invoices
   has_many :items
 
-  def average_item_price
-    total_cost_of_items / items.count
+  def self.order_by_id
+    order('id ASC')
   end
 
-  def total_cost_of_items
-    items.reduce(0) do |total, item|
-      total + item.unit_price
-    end
+  def self.fetch_dashboard_data
+    joins(:items).select('merchants.*, sum(items.unit_price) AS total_cost, avg(items.unit_price) AS avg_price, count(items.id) AS item_count').group('merchants.id')
+  end
+
+  def self.with_most_items
+    fetch_dashboard_data.order('item_count DESC').limit(1)[0]
+  end
+
+  def self.with_highest_cost
+    fetch_dashboard_data.order('total_cost DESC').limit(1)[0]
   end
 end

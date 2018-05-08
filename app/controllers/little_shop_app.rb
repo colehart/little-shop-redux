@@ -3,7 +3,7 @@ class LittleShopApp < Sinatra::Base
   set :method_override, true
 
   get '/merchants' do
-    @merchants = Merchant.all.sort_by(&:id)
+    @merchants = Merchant.order_by_id
     erb :"merchants/index"
   end
 
@@ -33,12 +33,9 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants-dashboard' do
-    @merchants = Merchant.all
-    @merchant_with_most_items = @merchants.max_by do |merchant|
-      merchant.items.count
-    end
-    pricey_item = Item.all.max_by(&:unit_price)
-    @pricey_merchant = Merchant.find(pricey_item.merchant_id)
+    @merchants = Merchant.fetch_dashboard_data
+    @merchant_with_most_items = Merchant.with_most_items
+    @pricey_merchant = Merchant.with_highest_cost
     erb :'/merchants/dashboard'
   end
 
@@ -48,7 +45,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items' do
-    @items = Item.all.sort_by(&:id)
+    @items = Item.order_by_id
     erb :'/items/index'
   end
 
@@ -87,14 +84,14 @@ class LittleShopApp < Sinatra::Base
 
   get '/items-dashboard' do
     @count = Item.count
-    @average = Item.average(:unit_price)
-    @newest = Item.all.max_by(&:created_at)
-    @oldest = Item.all.min_by(&:created_at)
+    @average = Item.average_unit_price
+    @newest = Item.newest
+    @oldest = Item.oldest
     erb :'/items/dashboard'
   end
 
   get '/invoices' do
-    @invoices = Invoice.all.sort_by(&:id)
+    @invoices = Invoice.order_by_id
     erb :"invoices/index"
   end
 
@@ -130,6 +127,8 @@ class LittleShopApp < Sinatra::Base
     @returned = Invoice.total_invoices_by_status('returned')
     @highest_unit_price = Invoice.highest_by_unit_price
     @lowest_unit_price = Invoice.lowest_by_unit_price
+    @highest_quantity = Invoice.highest_by_quantity
+    @lowest_quantity = Invoice.lowest_by_quantity
     erb :'/invoices/dashboard'
   end
 end
