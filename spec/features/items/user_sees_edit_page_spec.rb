@@ -19,12 +19,7 @@ RSpec.describe 'A user visits edit item page' do
     image = 'image.jpg'
     fill_in('item[image]', with: image)
 
-    # within('.merchant-dropdown') do
-    #   find("option[value='2']").click
-    # end # Add more merchants, set default
-    # select("option value='2'", from: '
-    #   item[merchant_id]').select_option
-    # find('#item[merchant_id]').find(:xpath, 'option[2]').select_option
+    select 'borker king', from: 'item[merchant_id]'
 
     expect(page).to have_content(description)
     click_button('Update Item')
@@ -32,7 +27,7 @@ RSpec.describe 'A user visits edit item page' do
     expect(item1.name).to eq(new_name)
     expect(item1.description).to eq(description)
     expect(item1.image).to eq(image)
-    expect(item1.merchant_id).to eq(1)
+    expect(item1.merchant_id).to eq(2)
     expect(item1.id).to eq(1)
   end
 

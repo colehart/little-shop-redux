@@ -20,7 +20,7 @@ RSpec.describe 'A user can see one invoice' do
     visit "/invoices/#{invoice.id}"
 
     click_link('Edit')
-    expect(current_path).to eq('/invoices/1/edit')
+    expect(current_path).to eq("/invoices/#{invoice.id}/edit")
   end
 
   it 'shows delete button that destroys invoice and redirects to index' do

@@ -29,7 +29,7 @@ RSpec.describe 'A user visits create new item page' do
     description = 'Super great action doll!'
     fill_in('item[description]', with: description)
     fill_in('item[unit_price]', with: 1_000_000)
-    fill_in('item[image]', with:'image.jpeg')
+    fill_in('item[image]', with: 'image.jpeg')
 
     click_button('Create Item')
 
