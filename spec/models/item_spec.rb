@@ -32,4 +32,32 @@ RSpec.describe Item do
       end
     end
   end
+  describe 'class methods' do
+    it 'can find average unit price' do
+      item1 = Item.create(name: 'Cole', description: 'Stuff', unit_price: 100, image: './placeholder.jpg')
+      item2 = Item.create(name: 'Steven Tyler', description: 'fluff', unit_price: 200, image: './placeholder.jpg')
+
+      item_average = Item.average_unit_price
+
+      expect(item_average).to eq(150)
+    end
+
+    it 'can find newest item' do
+      item1 = Item.create(name: 'Cole', description: 'Stuff', unit_price: 100, image: './placeholder.jpg')
+      item2 = Item.create(name: 'Steven Tyler', description: 'fluff', unit_price: 200, image: './placeholder.jpg')
+
+      newest_item = Item.newest
+
+      expect(newest_item.description).to eq('fluff')
+    end
+
+    it 'can find oldest item' do
+      item1 = Item.create(name: 'Cole', description: 'Stuff', unit_price: 100, image: './placeholder.jpg')
+      item2 = Item.create(name: 'Steven Tyler', description: 'fluff', unit_price: 200, image: './placeholder.jpg')
+
+      oldest_item = Item.oldest
+
+      expect(oldest_item.description).to eq('Stuff')
+    end
+  end
 end
