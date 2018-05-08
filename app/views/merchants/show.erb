@@ -5,3 +5,12 @@
   <input type="submit" value="Delete"/>
 </form>
 <%# photos, linked name, and prices of items below %>
+<main class="all-items">
+  <% @merchant.items.each do |item| %>
+    <section class="merchant-<%= item.id %>">
+      <img src="<%= item.image %>" alt="an image of <%= item.name %>" />
+      <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
+      <p><%= item.unit_price %></p>
+    </section>
+  <% end %>
+</main>
