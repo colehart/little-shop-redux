@@ -1,0 +1,11 @@
+<h1>Merchants Dashboard</h1>
+<% @merchants.each do |merchant| %>
+  <div class="merchants">
+    <a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a>
+    <a href="/merchants/<%= merchant.id  %>/edit">Edit</a>
+    <form action="/merchants/<%= merchant.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete"/>
+    </form>
+  </div>
+<% end %>

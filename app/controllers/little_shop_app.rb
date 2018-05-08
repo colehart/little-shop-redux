@@ -32,6 +32,15 @@ class LittleShopApp < Sinatra::Base
     redirect '/merchants'
   end
 
+  get '/merchants-dashboard' do
+    @merchants = Merchant.all
+    @count = Merchant.count
+    # @average = Merchant.average(:unit_price)
+    # @newest = Merchant.all.max_by(&:created_at)
+    # @oldest = Merchant.all.min_by(&:created_at)
+    erb :'/merchants/dashboard'
+  end
+
   delete '/merchants/:id' do
     Merchant.destroy(params[:id])
     redirect '/merchants'
@@ -80,7 +89,6 @@ class LittleShopApp < Sinatra::Base
     @average = Item.average(:unit_price)
     @newest = Item.all.max_by(&:created_at)
     @oldest = Item.all.min_by(&:created_at)
-    # require 'pry'; binding.pry
     erb :'/items/dashboard'
   end
 

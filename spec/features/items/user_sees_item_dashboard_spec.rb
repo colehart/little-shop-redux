@@ -1,4 +1,4 @@
-RSpec.describe 'A user visits items page' do
+RSpec.describe 'A user visits items-dashboard page' do
   it 'shows a headline' do
     page_content = 'Items Dashboard'
     merchant = Merchant.create(name: 'borks r us')
