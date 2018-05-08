@@ -21,7 +21,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.fetch_dashboard_data
-    joins(:invoice_items).select('invoices.*, sum(invoice_items.unit_price) AS total_cost, sum(invoice_items.quantity) AS total_quantity').group('invoices.id')
+    joins(:invoice_items).select('invoices.*, sum(invoice_items.unit_price * invoice_items.quantity) AS total_cost, sum(invoice_items.quantity) AS total_quantity').group('invoices.id')
   end
 
   def self.highest_by_unit_price

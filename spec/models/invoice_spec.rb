@@ -39,5 +39,20 @@ RSpec.describe Invoice do
       expect(percent1).to eq(66)
       expect(percent2).to eq(33)
     end
+
+    it 'can fetch the dashboard data' do
+      invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+      invoice2 = Invoice.create(customer_id: 2, merchant_id: 4, status: 'pending')
+      invoice1.invoice_items.create(item_id: 1, quantity: 2, unit_price: 100)
+      invoice2.invoice_items.create(item_id: 2, quantity: 4, unit_price: 200)
+      invoice2.invoice_items.create(item_id: 3, quantity: 6, unit_price: 600)
+
+      invoices = Invoice.fetch_dashboard_data
+
+      expect(invoices[1].total_cost.to_i).to eq(200)
+      expect(invoices[0].total_cost.to_i).to eq(4400)
+      expect(invoices[1].total_quantity.to_i).to eq(2)
+      expect(invoices[0].total_quantity.to_i).to eq(10)
+    end
   end
 end
