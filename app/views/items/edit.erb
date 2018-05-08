@@ -3,7 +3,7 @@
 <form class="edit-item" action="/items/<%= @item.id %>" method="post">
   <input type="hidden" name="_method" value="PUT">
   <p>Merchant</p>
-  
+
   <select class="merchant-dropdown" name="item[merchant_id]">
     <% @merchants.each do |merchant| %>
       <% if @item.merchant.id != merchant.id %>
@@ -19,7 +19,7 @@
   <p>Description</p>
   <textarea name="item[description]"><%= @item.description %></textarea>
   <p>Price</p>
-  <input type="integer" name="item[unit_price]" value="<%= @item.unit_price %>">
+  <input type="integer" name="item[unit_price]" value="$<%= '%.2f' % @item.unit_price %>">
   <p>Image URL</p>
   <input type="text" name="item[image]" value="<%= @item.image %>">
   <a href="/items"> <button>Cancel</button></a>
