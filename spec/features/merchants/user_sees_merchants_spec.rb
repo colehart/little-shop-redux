@@ -44,7 +44,7 @@ RSpec.describe 'A user visits merchants page' do
     expect(current_path).to eq("/merchants/#{merchant.id}")
   end
 
-  xit 'links to merchant dashboard page' do
+  it 'links to merchant dashboard page' do
     Merchant.create(name: 'borks r us')
 
     visit '/merchants'

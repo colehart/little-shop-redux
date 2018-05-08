@@ -1,5 +1,7 @@
 <h1>Merchants Dashboard</h1>
 <section class="top-merchants" name="Top Merchants">
-  <p>Merchant With Most Items</p>
+  <p>Merchant With Most Items:</p>
   <p><a href="/merchants/<%= @merchant_with_most_items.id %>"><%= @merchant_with_most_items.name %></a></p>
+  <p>Merchant With Highest Priced Item:</p>
+  <p><a href="/merchants/<%= @pricey_merchant.id %>"><%= @pricey_merchant.name %></a></p>
 </section>
