@@ -12,16 +12,20 @@
     <h3>Returned</h3>
     <h3><%= @returned %>%</h3>
   </article>
-  <!-- <article id="unit_prices">
+  <article id="unit_prices">
     <h2>Unit Prices</h2>
-    <h3>Highest</h3>
-    <h4>Invoice:</h4>
-    <h4><a href="/items/<% # item.id %>"><%= #ERB code here %></a></h4>
-    <h3>Lowest</h3>
-    <h4>Invoice:</h4>
-    <h4><a href="/items/<% # item.id %>"><%= #ERB code here %></a></h4>
+    <section class="highest">
+      <h3>Highest</h3>
+      <h4>Invoice:</h4>
+      <h4><a href="/items/<%= @highest_unit_price.id %>"><%= @highest_unit_price.id %></a></h4>
+    </section>
+    <section class="lowest">
+      <h3>Lowest</h3>
+      <h4>Invoice:</h4>
+      <h4><a href="/items/<% @lowest_unit_price.id %>"><%= @lowest_unit_price.id %></a></h4>
+    </section>
   </article>
-  <article id="quantity">
+  <!-- <article id="quantity">
     <h2>Quantity</h2>
     <h3>Highest</h3>
     <h4>Invoice:</h4>

@@ -128,6 +128,8 @@ class LittleShopApp < Sinatra::Base
     @pending = Invoice.total_invoices_by_status('pending')
     @shipped = Invoice.total_invoices_by_status('shipped')
     @returned = Invoice.total_invoices_by_status('returned')
+    @highest_unit_price = Invoice.highest_by_unit_price
+    @lowest_unit_price = Invoice.lowest_by_unit_price
     erb :'/invoices/dashboard'
   end
 end

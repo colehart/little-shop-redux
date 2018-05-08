@@ -47,7 +47,9 @@ RSpec.describe 'A user visits invoices page' do
   end
 
   it 'links to invoice dashboard' do
-    Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+    invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+    invoice1.invoice_items.create(item_id: 1, quantity: 3, unit_price: 2500)
+    
     visit '/invoices'
 
     click_link('Dashboard')
