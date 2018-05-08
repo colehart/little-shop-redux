@@ -21,4 +21,12 @@ RSpec.describe 'A user sees new merchant page' do
     click_link('Cancel')
     expect(current_path).to eq('/merchants')
   end
+
+  it 'redirects on a failed creation' do
+    visit '/merchants/new'
+
+    click_button('Create Merchant')
+    expect(Merchant.count).to eq(0)
+    expect(current_path).to eq('/merchants')
+  end
 end

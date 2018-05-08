@@ -37,4 +37,12 @@ RSpec.describe 'A user visits create new item page' do
     expect(item.name).to eq(name)
     expect(item.description).to eq(description)
   end
+
+  it 'redirects on a failed creation' do
+    visit '/items/new'
+
+    click_button('Create Item')
+    expect(Item.count).to eq(0)
+    expect(current_path).to eq('/items')
+  end
 end

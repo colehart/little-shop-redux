@@ -1,32 +1,37 @@
-<h1>Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
-<a href="/invoices/<%= @invoice.id  %>/edit">Edit</a>
-<form action="/invoices/<%= @invoice.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete"/>
-</form>
-<h3><a href="/merchants/<%= @merchant.id %>"><%= @merchant.name %></a></h3>
-<table>
-  <thead>
-    <tr>
-      <th>Item ID</th>
-      <th>Item Title</th>
-      <th>Quantity</th>
-      <th>Unit Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @invoice_items.each do |invoice_item| %>
-    <tr>
-      <td> <a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a></td>
-      <td><%= invoice_item.item.name %></td>
-      <td><%= invoice_item.quantity %></td>
-      <td><%= invoice_item.unit_price.to_f/100 %></td>
-    </tr>
-  <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Total Price: <%= @invoice.total_price.to_f/100 %></td>
-    </tr>
-  </tfoot>
-</table>
+<header>
+  <h1>Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
+  <a href="/invoices/<%= @invoice.id  %>/edit"><button>Edit</button></a>
+  <form action="/invoices/<%= @invoice.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete"/>
+  </form>
+</header>
+
+<main>
+  <h3><a href="/merchants/<%= @merchant.id %>"><%= @merchant.name %></a></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Item ID</th>
+        <th>Item Title</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @invoice_items.each do |invoice_item| %>
+      <tr>
+        <td> <a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a></td>
+        <td><%= invoice_item.item.name %></td>
+        <td><%= invoice_item.quantity %></td>
+        <td><%= invoice_item.unit_price.to_f/100 %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total Price: <%= @invoice.total_price.to_f/100 %></td>
+      </tr>
+    </tfoot>
+  </table>
+</main>
