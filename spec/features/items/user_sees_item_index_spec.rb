@@ -33,7 +33,7 @@ RSpec.describe 'A user visits items page' do
 
   it 'links to item show page' do
     Merchant.create(name: 'hi')
-    item = Item.create(name: 'bork', description: 'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
+    item = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: 1, image:'borkface.jpeg')
     visit '/items'
     click_link(item.name)
     expect(current_path).to eq("/items/#{item.id}")

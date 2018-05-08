@@ -30,5 +30,4 @@ RSpec.describe 'A user visits edit item page' do
     expect(item1.merchant_id).to eq(2)
     expect(item1.id).to eq(1)
   end
-
 end
