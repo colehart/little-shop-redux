@@ -36,8 +36,6 @@ RSpec.describe 'A user visits merchants dashboard' do
 
     visit '/merchants-dashboard'
 
-    # save_and_open_page
-
     expect(page).to have_content(page_content)
   end
 end

@@ -37,9 +37,8 @@ class LittleShopApp < Sinatra::Base
     @merchant_with_most_items = @merchants.max_by do |merchant|
       merchant.items.count
     end
-    @pricey_merchant = @merchants.max_by do |merchant|
-      merchant.items.all.max_by(&:unit_price)
-    end
+    pricey_item = Item.all.max_by(&:unit_price)
+    @pricey_merchant = Merchant.find(pricey_item.merchant_id)
     erb :'/merchants/dashboard'
   end
 
