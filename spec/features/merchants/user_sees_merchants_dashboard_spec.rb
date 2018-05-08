@@ -38,4 +38,28 @@ RSpec.describe 'A user visits merchants dashboard' do
 
     expect(page).to have_content(page_content)
   end
+
+  it 'shows merchant information' do
+    merchant1 = Merchant.create(name: 'borks r us')
+    merchant2 = Merchant.create(name: 'gorks is you')
+    item1 = Item.create(name: 'bork', description: 'totally borked it', unit_price: 1666, merchant_id: merchant1.id, image: 'borkface.jpeg')
+    item2 = Item.create(name: 'gork', description: 'totally gorked it', unit_price: 100, merchant_id: merchant2.id, image: 'gorkface.jpeg')
+    item3 = Item.create(name: 'pork', description: 'totally porked it', unit_price: 300, merchant_id: merchant2.id, image: 'porkface.jpeg')
+
+
+    visit '/merchants-dashboard'
+
+    within(".merchant-#{merchant1.id}") do
+      expect(page).to have_content(1)
+      expect(page).to have_content(1666)
+      expect(page).to have_content(1666)
+    end
+
+    within(".merchant-#{merchant2.id}") do
+      expect(page).to have_content(2)
+      expect(page).to have_content(200)
+      expect(page).to have_content(400)
+    end
+  end
+
 end

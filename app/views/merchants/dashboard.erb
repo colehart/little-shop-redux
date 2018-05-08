@@ -5,3 +5,16 @@
   <p>Merchant With Highest Priced Item:</p>
   <p><a href="/merchants/<%= @pricey_merchant.id %>"><%= @pricey_merchant.name %></a></p>
 </section>
+<main class="all-merchants">
+  <% @merchants.each do |merchant| %>
+    <section class="merchant-<%= merchant.id %>">
+      <h3><a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a></h3>
+      <h4>Item Count:</h4>
+      <p><%= merchant.items.count %></p>
+      <h4>Avg Item Price:</h4>
+      <p><%= merchant.average_item_price %></p>
+      <h4>Total Cost of Items:</h4>
+      <p><%= merchant.total_cost_of_items %></p>
+    </section>
+  <% end %>
+</main>
