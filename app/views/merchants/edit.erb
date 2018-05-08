@@ -2,7 +2,7 @@
 
 <form class="edit-merchant" action="/merchants/<%= @merchant.id %>" method="post">
   <input type="hidden" name="_method" value="PUT">
-  <p> Name: </p>
+  <p> Name </p>
   <input type="text" name="merchant[name]" placeholder="<%= @merchant.name %>">
   <a href="/merchants"><button>Cancel</button></a>
   <input type="submit" value="Update Merchant">
