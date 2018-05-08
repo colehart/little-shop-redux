@@ -6,6 +6,6 @@
 <div class="item">
   <img src="<%= item.image %>" alt="">
   <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
-  <p>$<%= item.unit_price.to_f/100 %></p>
+  <p>$<%= '%.2f' % (item.unit_price.to_f/100) %></p>
 </div>
 <% end %>

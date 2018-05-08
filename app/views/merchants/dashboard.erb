@@ -12,9 +12,9 @@
       <h4>Item Count:</h4>
       <p><%= merchant.item_count %></p>
       <h4>Avg Item Price:</h4>
-      <p><%= merchant.avg_price %></p>
+      <p>$<%= '%.2f' % merchant.avg_price %></p>
       <h4>Total Cost of Items:</h4>
-      <p><%= merchant.total_cost %></p>
+      <p>$<%= '%.2f' % merchant.total_cost %></p>
     </section>
   <% end %>
 </main>

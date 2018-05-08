@@ -40,13 +40,13 @@
         <td> <a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a></td>
         <td><%= invoice_item.item.name %></td>
         <td><%= invoice_item.quantity %></td>
-        <td><%= invoice_item.unit_price.to_f/100 %></td>
+        <td>$<%= '%.2f' % (invoice_item.unit_price.to_f/100) %></td>
       </tr>
     <% end %>
     </tbody>
     <tfoot>
       <tr>
-        <td>Total Price: <%= @invoice.total_price.to_f/100 %></td>
+        <td>Total Price: $<%= '%.2f' % (@invoice.total_price.to_f/100) %></td>
       </tr>
     </tfoot>
   </table>

@@ -10,7 +10,7 @@
     <section class="merchant-<%= item.id %>">
       <img src="<%= item.image %>" alt="an image of <%= item.name %>" />
       <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
-      <p><%= item.unit_price %></p>
+      <p>$<%= '%.2f' % item.unit_price %></p>
     </section>
   <% end %>
 </main>
