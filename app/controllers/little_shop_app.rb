@@ -33,8 +33,10 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants-dashboard' do
-    items = Item.where(merchant_id: merchant.id).count
-    @merchant_with_most_items = Merchant.all.sort_by(&:items).reverse.first
+    @merchants = Merchant.all
+    @merchant_with_most_items = @merchants.max_by do |merchant|
+      merchant.items.count
+    end
     erb :'/merchants/dashboard'
   end
 

@@ -6,7 +6,7 @@ RSpec.describe 'A user visits invoice dashboard' do
     expect(page).to have_content(page_content)
   end
 
-  it 'shows pending percentage' do
+  xit 'shows pending percentage' do
     page_content = '25%'
     invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
     invoice2 = Invoice.create(customer_id: 2, merchant_id: 2, status: 'shipped')
