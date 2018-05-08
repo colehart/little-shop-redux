@@ -1,11 +1,15 @@
-<a href="/invoices-dashboard">Dashboard</a>
-<h1>Invoices</h1>
+<header>
+  <a href="/invoices-dashboard">Dashboard</a>
+  <h1>Invoices</h1>
+</header>
 
-<% @invoices.each do |invoice| %>
-  <h3><a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a></h3>
-  <a href="/invoices/<%= invoice.id  %>/edit"><button>Edit</button></a>
-  <form action="/invoices/<%= invoice.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"/>
-  </form>
-<% end %>
+<main>
+  <% @invoices.each do |invoice| %>
+    <h3><a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a></h3>
+    <a href="/invoices/<%= invoice.id  %>/edit"><button>Edit</button></a>
+    <form action="/invoices/<%= invoice.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete"/>
+    </form>
+  <% end %>
+</main>

@@ -124,6 +124,10 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/invoices-dashboard' do
+    @invoices = Invoice.all
+    @pending = Invoice.total_invoices_by_status('pending')
+    @shipped = Invoice.total_invoices_by_status('shipped')
+    @returned = Invoice.total_invoices_by_status('returned')
     erb :'/invoices/dashboard'
   end
 end

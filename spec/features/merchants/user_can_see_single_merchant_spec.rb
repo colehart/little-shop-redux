@@ -31,8 +31,6 @@ RSpec.describe 'A user can see one merchant' do
     merchant.items.create(name: 'dork', description: 'totally dorked it', unit_price: unit_price, image: 'dorkface.jpeg')
 
     visit "/merchants/#{merchant.id}"
-    save_and_open_page
-    # binding.pry
     expect(page).to have_content(item_name)
     expect(page).to have_content(unit_price)
   end

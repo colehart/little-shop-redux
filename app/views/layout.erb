@@ -1,11 +1,20 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <title>Little Shop</title>
-  <link href="/master.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<h1>Awesome Headline</h1>
-<%= yield %>
-</body>
+  <head>
+    <title>Little Shop</title>
+    <link href="/master.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <nav>
+      <section>
+        <a href="/">LittleShop</a>
+      </section>
+      <aside>
+        <a href="/merchants">Merchants</a>
+        <a href="/items">Items</a>
+        <a href="/invoices">Invoices</a>
+      </aside>
+    </nav>
+    <%= yield %>
+  </body>
 </html>
