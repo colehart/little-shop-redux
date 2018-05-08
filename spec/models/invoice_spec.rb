@@ -54,5 +54,53 @@ RSpec.describe Invoice do
       expect(invoices[1].total_quantity.to_i).to eq(2)
       expect(invoices[0].total_quantity.to_i).to eq(10)
     end
+
+    it 'can find the invoice by highest unit price' do
+      invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+      invoice2 = Invoice.create(customer_id: 2, merchant_id: 4, status: 'pending')
+      invoice1.invoice_items.create(item_id: 1, quantity: 2, unit_price: 100)
+      invoice2.invoice_items.create(item_id: 2, quantity: 4, unit_price: 200)
+      invoice2.invoice_items.create(item_id: 3, quantity: 6, unit_price: 600)
+
+      highest_invoice = Invoice.highest_by_unit_price
+
+      expect(highest_invoice.merchant_id).to eq(4)
+    end
+
+    it 'can find the invoice by lowest unit price' do
+      invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+      invoice2 = Invoice.create(customer_id: 2, merchant_id: 4, status: 'pending')
+      invoice1.invoice_items.create(item_id: 1, quantity: 2, unit_price: 100)
+      invoice2.invoice_items.create(item_id: 2, quantity: 4, unit_price: 200)
+      invoice2.invoice_items.create(item_id: 3, quantity: 6, unit_price: 600)
+
+      lowest_invoice = Invoice.lowest_by_unit_price
+
+      expect(lowest_invoice.merchant_id).to eq(1)
+    end
+
+    it 'can find the invoice by highest quantity' do
+      invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+      invoice2 = Invoice.create(customer_id: 2, merchant_id: 4, status: 'pending')
+      invoice1.invoice_items.create(item_id: 1, quantity: 2, unit_price: 100)
+      invoice2.invoice_items.create(item_id: 2, quantity: 4, unit_price: 200)
+      invoice2.invoice_items.create(item_id: 3, quantity: 6, unit_price: 600)
+
+      highest_invoice = Invoice.highest_by_quantity
+
+      expect(highest_invoice.merchant_id).to eq(4)
+    end
+
+    it 'can find the invoice by lowest quantity' do
+      invoice1 = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+      invoice2 = Invoice.create(customer_id: 2, merchant_id: 4, status: 'pending')
+      invoice1.invoice_items.create(item_id: 1, quantity: 2, unit_price: 100)
+      invoice2.invoice_items.create(item_id: 2, quantity: 4, unit_price: 200)
+      invoice2.invoice_items.create(item_id: 3, quantity: 6, unit_price: 600)
+
+      lowest_invoice = Invoice.lowest_by_quantity
+
+      expect(lowest_invoice.merchant_id).to eq(1)
+    end
   end
 end
