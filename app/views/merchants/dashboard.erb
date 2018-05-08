@@ -1,15 +1,5 @@
 <h1>Merchants Dashboard</h1>
 <section class="top-merchants" name="Top Merchants">
   <p>Merchant With Most Items</p>
-  <p><a href="/merchants/<%= @most_items_merchant.id %>"><%= @most_items_merchant.name %></a></p>
+  <p><a href="/merchants/<%= @merchant_with_most_items.id %>"><%= @merchant_with_most_items.name %></a></p>
 </section>
-<% @merchants.each do |merchant| %>
-  <div class="merchants">
-    <a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a>
-    <a href="/merchants/<%= merchant.id  %>/edit">Edit</a>
-    <form action="/merchants/<%= merchant.id %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete"/>
-    </form>
-  </div>
-<% end %>

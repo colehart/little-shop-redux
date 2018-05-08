@@ -33,13 +33,8 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants-dashboard' do
-    @merchant_with_most_items = Item.join(:merchant_id)
-    # @items = Item.all.group_by(&:merchant_id)
-    # @merchant = @items.max_by do |k, v|
-    #   v.count
-    # end
-    # @most_items_merchant = Merchant.find(@merchant[1][0].merchant_id)
-
+    items = Item.where(merchant_id: merchant.id).count
+    @merchant_with_most_items = Merchant.all.sort_by(&:items).reverse.first
     erb :'/merchants/dashboard'
   end
 
@@ -122,5 +117,9 @@ class LittleShopApp < Sinatra::Base
   delete '/invoices/:id' do
     Invoice.destroy(params[:id])
     redirect '/invoices'
+  end
+
+  get '/invoices-dashboard' do
+    erb :'/invoices/dashboard'
   end
 end
