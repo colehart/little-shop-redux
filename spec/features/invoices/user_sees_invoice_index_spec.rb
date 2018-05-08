@@ -45,4 +45,12 @@ RSpec.describe 'A user visits invoices page' do
     expect(page).to_not have_content(invoice.id)
     expect(Invoice.count).to eq(0)
   end
+
+  it 'links to invoice dashboard' do
+    Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+    visit '/invoices'
+
+    click_link('Dashboard')
+    expect(current_path).to eq('/invoices-dashboard')
+  end
 end

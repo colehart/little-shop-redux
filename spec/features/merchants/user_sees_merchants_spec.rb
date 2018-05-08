@@ -44,4 +44,14 @@ RSpec.describe 'A user visits merchants page' do
     click_link(merchant.name)
     expect(current_path).to eq("/merchants/#{merchant.id}")
   end
+
+  it 'links to merchant dashboard page' do
+    merchant1 = Merchant.create(name: 'borks r us')
+    Item.create(name: 'bork', description: 'totally borked it', unit_price: 66, merchant_id: merchant1.id, image: 'borkface.jpeg')
+
+    visit '/merchants'
+
+    click_link('Dashboard')
+    expect(current_path).to eq('/merchants-dashboard')
+  end
 end
