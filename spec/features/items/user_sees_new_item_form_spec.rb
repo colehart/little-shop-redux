@@ -17,20 +17,24 @@ RSpec.describe 'A user visits create new item page' do
   end
 
   it 'creates a new item' do
-    merchant1 = Merchant.create(name: 'Borks R Us')
+    merchant = Merchant.create(name: 'Borks R Us')
     visit '/items/new'
 
     within('.merchant-dropdown') do
-      find("option[value='#{merchant1.id}']").click
+      find("option[value='#{merchant.id}']").click
     end
-    fill_in('item[name]', with: 'Steven Tyler')
-    fill_in('item[description]', with:'Super great action doll!')
+
+    name = 'Steven Tyler'
+    fill_in('item[name]', with: name)
+    description = 'Super great action doll!'
+    fill_in('item[description]', with: description)
     fill_in('item[unit_price]', with: 1_000_000)
-    fill_in('item[image]', with:'image.jpeg')
+    fill_in('item[image]', with: 'image.jpeg')
 
     click_button('Create Item')
 
     item = Item.first
-    expect(item.name).to eq('Steven Tyler')
+    expect(item.name).to eq(name)
+    expect(item.description).to eq(description)
   end
 end

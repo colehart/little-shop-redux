@@ -5,13 +5,13 @@ RSpec.describe 'A user can see one merchant' do
     visit "/merchants/#{merchant.id}"
     expect(page).to have_content(merchant.name)
   end
-  
+
   it 'shows edit button that redirects to edit merchant' do
     merchant = Merchant.create(name: 'Cole')
     visit "/merchants/#{merchant.id}"
 
     click_link('Edit')
-    expect(current_path).to eq('/merchants/1/edit')
+    expect(current_path).to eq("/merchants/#{merchant.id}/edit")
   end
 
   it 'shows delete button that destroys merchant and redirects to index' do

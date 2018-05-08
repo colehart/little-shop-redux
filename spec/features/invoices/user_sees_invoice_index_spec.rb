@@ -28,12 +28,12 @@ RSpec.describe 'A user visits invoices page' do
 
   it 'can direct to edit invoice page' do
     Merchant.create(name: 'Cole')
-    Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
+    invoice = Invoice.create(customer_id: 1, merchant_id: 1, status: 'shipped')
 
     visit '/invoices'
 
     click_link('Edit')
-    expect(current_path).to eq('/invoices/1/edit')
+    expect(current_path).to eq("/invoices/#{invoice.id}/edit")
   end
 
   it 'can delete an invoice' do

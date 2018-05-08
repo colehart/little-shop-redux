@@ -1,7 +1,7 @@
 RSpec.describe 'A user visits a single item page' do
   it 'shows item details' do
     merchant = Merchant.create(name: 'borks r us')
-    item = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:merchant.id, image:'borkface.jpeg')
+    item = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
     visit "/items/#{item.id}"
 
     expect(page).to have_content(item.name)
@@ -14,7 +14,7 @@ RSpec.describe 'A user visits a single item page' do
 
   it 'can go to edit item page' do
     merchant = Merchant.create(name: 'borks r us')
-    item = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:merchant.id, image:'borkface.jpeg')
+    item = Item.create(name:'bork', description:'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
     visit "/items/#{item.id}"
 
     click_link('Edit')
@@ -23,7 +23,7 @@ RSpec.describe 'A user visits a single item page' do
 
   it 'can go to edit item page' do
     merchant = Merchant.create(name: 'borks r us')
-    item = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:merchant.id, image:'borkface.jpeg')
+    item = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
     visit "/items/#{item.id}"
 
     click_button('Delete')
