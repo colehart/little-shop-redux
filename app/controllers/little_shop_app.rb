@@ -34,7 +34,10 @@ class LittleShopApp < Sinatra::Base
 
   get '/merchants-dashboard' do
     @merchants = Merchant.all
-    @count = Merchant.count
+    @items = Item.all.group_by(&:merchant_id)
+    require "pry";binding.pry
+    @most_items_merchant = @merchants.Item.max_by(items.count)
+    # @count = Item.count
     # @average = Merchant.average(:unit_price)
     # @newest = Merchant.all.max_by(&:created_at)
     # @oldest = Merchant.all.min_by(&:created_at)
@@ -121,5 +124,4 @@ class LittleShopApp < Sinatra::Base
     Invoice.destroy(params[:id])
     redirect '/invoices'
   end
-
 end
