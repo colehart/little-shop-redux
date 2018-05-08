@@ -33,14 +33,13 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants-dashboard' do
-    @merchants = Merchant.all
-    @items = Item.all.group_by(&:merchant_id)
-    require "pry";binding.pry
-    @most_items_merchant = @merchants.Item.max_by(items.count)
-    # @count = Item.count
-    # @average = Merchant.average(:unit_price)
-    # @newest = Merchant.all.max_by(&:created_at)
-    # @oldest = Merchant.all.min_by(&:created_at)
+    @merchant_with_most_items = Item.join(:merchant_id)
+    # @items = Item.all.group_by(&:merchant_id)
+    # @merchant = @items.max_by do |k, v|
+    #   v.count
+    # end
+    # @most_items_merchant = Merchant.find(@merchant[1][0].merchant_id)
+
     erb :'/merchants/dashboard'
   end
 
