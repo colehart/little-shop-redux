@@ -7,23 +7,31 @@ RSpec.describe 'A user visits edit item page' do
   end
 
   it 'edits a updates an item' do
-    merchant = Merchant.create(name: 'borks r us')
-
-    item = Item.create(name:'bork', description:'totally borked it', unit_price:666, merchant_id:1, image:'borkface.jpeg')
+    Merchant.create(name: 'borks r us')
+    Merchant.create(name: 'borker king')
+    description = 'totally borked it'
+    item = Item.create(name: 'bork', description: description, unit_price: 666, merchant_id: 1, image: 'borkface.jpeg')
     visit "/items/#{item.id}/edit"
 
-    fill_in('item[name]', with: 'Steven Tyler')
+    new_name = 'Steven Tyler'
+    fill_in('item[name]', with: new_name)
     fill_in('item[unit_price]', with: 1_000_000)
-    fill_in('item[image]', with:'image.jpeg')
+    image = 'image.jpg'
+    fill_in('item[image]', with: image)
+
     # within('.merchant-dropdown') do
-    #   find("option[value='1']").click
-    # end - Add more merchants, set default
-    expect(page).to have_content('totally borked it')
+    #   find("option[value='2']").click
+    # end # Add more merchants, set default
+    # select("option value='2'", from: '
+    #   item[merchant_id]').select_option
+    # find('#item[merchant_id]').find(:xpath, 'option[2]').select_option
+
+    expect(page).to have_content(description)
     click_button('Update Item')
     item1 = Item.find(item.id)
-    expect(item1.name).to eq('Steven Tyler')
-    expect(item1.description).to eq('totally borked it')
-    expect(item1.image).to eq('image.jpeg')
+    expect(item1.name).to eq(new_name)
+    expect(item1.description).to eq(description)
+    expect(item1.image).to eq(image)
     expect(item1.merchant_id).to eq(1)
     expect(item1.id).to eq(1)
   end
