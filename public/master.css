@@ -64,6 +64,17 @@ header {
   padding: 1.5rem;
 }
 
+.has-button-below {
+  height: 30%;
+  background-color: #45ADA8;
+  color: #E5FCC2;
+  margin: auto;
+  display: block;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
 main {
   height: 65%;
   display: flex;
@@ -110,11 +121,37 @@ form {
   font-size: medium;
 }
 
-.edit-buttons {
+.edit-buttons-group {
   display: flex;
   justify-content: space-between;
   margin: 1rem auto;
   width: 100%;
+}
+
+.create-button-header {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.edit-button {
+  border-radius: 0;
+  background-color: #EBD01D;
+  padding: .5rem 1rem;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 11pt;
+  margin: 0 .5rem;
+  width: 2rem;
+}
+
+.delete-button {
+  border: none;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 11pt;
+  width: 2rem;
 }
 
 .cancel-button {
@@ -139,8 +176,29 @@ form {
   width: 10rem;
 }
 
+.create-button {
+  border-radius: 0;
+  background-color: #EBD01D;
+  padding: .5rem 1rem;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 11pt;
+  margin: 0 .5rem;
+  width: 10rem;
+}
+
 .table {
   margin: 1rem 0 0 0;
+}
+
+#invoice-index-table {
+  width: 90%;
+}
+#merchant-index-table {
+  width: 90%;
+}
+#items-index-table {
+  width: 90%;
 }
 
 table {
@@ -164,6 +222,20 @@ th {
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.index-invoice {
+  padding-top: 5rem;
+}
+
+table tr aside {
+  float: right;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 8rem;
+  width: 5rem;
+  padding: auto;
 }
 
 .total-price {

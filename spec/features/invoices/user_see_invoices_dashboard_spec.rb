@@ -35,14 +35,8 @@ RSpec.describe 'A user visits invoice dashboard' do
 
     visit '/invoices-dashboard'
 
-    within('article#unit_prices') do
-      within('section.highest') do
-        expect(page).to have_content("#{invoice2.id}")
-      end
-      within ('section.lowest') do
-        expect(page).to have_content("#{invoice1.id}")
-      end
-    end
+    expect(page).to have_content("#{invoice2.id}")
+    expect(page).to have_content("#{invoice1.id}")
   end
 
   it 'shows highest and lowest invoice by quantity' do
@@ -55,13 +49,7 @@ RSpec.describe 'A user visits invoice dashboard' do
 
     visit '/invoices-dashboard'
 
-    within('article#quantity') do
-      within('section.highest') do
-        expect(page).to have_content("#{invoice1.id}")
-      end
-      within ('section.lowest') do
-        expect(page).to have_content("#{invoice2.id}")
-      end
-    end
+    expect(page).to have_content("#{invoice1.id}")
+    expect(page).to have_content("#{invoice2.id}")
   end
 end

@@ -1,16 +1,19 @@
-<header Z>
+<header class="has-dashboard-link">
   <a href="/invoices-dashboard">Dashboard</a>
   <h1>Invoices</h1>
 </header>
 
 <main>
-  <section class="table" aria-label="invoice_list">
+  <section class="table" id="invoice-index-table" aria-label="invoice_list">
     <table>
       <tbody>
         <% @invoices.each do |invoice| %>
         <tr>
-          <td><a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a><a href="/invoices/<%= invoice.id  %>/edit"><button>Edit</button></a><form action="/invoices/<%= invoice.id %>" method="POST"><input type="hidden" name="_method" value="DELETE"><input type="submit" value="Delete"/>
-          </form>
+          <td><a class="index-invoice" href="/invoices/<%= invoice.id %>"><%= invoice.id %></a>
+            <aside class="edit-buttons-in-row">
+              <a href="/invoices/<%= invoice.id  %>/edit"><button class="submit-button">Edit</button></a><form class="delete-button" action="/invoices/<%= invoice.id %>" method="POST"><input type="hidden" name="_method" value="DELETE"><input class="cancel-button" type="submit" value="Delete"/>
+              </form>
+            </aside>
           </td>
         </tr>
         <% end %>
