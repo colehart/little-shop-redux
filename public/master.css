@@ -1,6 +1,6 @@
 body {
   font-family: 'Raleway';
-  background-color: #E5FCC2;
+  background-color: #dcedc2;
   color: #594F4F;
   margin: auto;
 }
@@ -33,7 +33,28 @@ nav aside a {
   padding-right: .25rem;
   font-size: medium;
 }
+
 header {
+  height: 30%;
+  background-color: #45ADA8;
+  color: #E5FCC2;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.has-dashboard-link {
+  height: 30%;
+  background-color: #45ADA8;
+  color: #E5FCC2;
+  margin: auto;
+  display: block;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.has-dashboard-link h1 {
   height: 30%;
   background-color: #45ADA8;
   color: #E5FCC2;
@@ -53,9 +74,11 @@ main {
 
 main article {
   display: block;
+  flex: 1 0 200px;
   width: 30%;
   border: 3px solid #594F4F;
   text-indent: 1.25rem;
+  margin: 2rem;
 }
 
 main article img {
@@ -66,6 +89,95 @@ main article img {
 
 main article h2 {
   text: bolder;
+}
+
+.edit {
+  display: block;
+}
+
+form {
+  display: block;
+  margin: 0 auto 0 auto;
+  border: 3px solid #594F4F;
+  padding: .5rem 1rem;
+}
+
+.dropdown {
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+  padding: .5rem;
+  font-size: medium;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.cancel-button {
+  border-radius: 0;
+  background-color: #E84A5F;
+  padding: .5rem 1rem;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 11pt;
+  margin: 0 .5rem;
+  width: 10rem;
+}
+
+.submit-button {
+  border-radius: 0;
+  background-color: #EBD01D;
+  padding: .5rem 1rem;
+  font-family: 'Raleway';
+  font-weight: bold;
+  font-size: 11pt;
+  margin: 0 .5rem;
+  width: 10rem;
+}
+
+.table {
+  margin: 1rem 0 0 0;
+}
+
+table {
+  display: table;
+  width: 100%;
+  border: 3px solid #9DE0AD;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: .5rem;
+  border: 1px solid #9DE0AD;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  background-color: #9DE0AD;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.total-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: auto;
+  text-align: center;
+  text-indent: 0;
+  border: none;
+  background-color: #9DE0AD;
+  background-size: auto;
+  margin: auto;
 }
 
 #status-percentages div {

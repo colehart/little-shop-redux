@@ -17,13 +17,13 @@ item_csv = CSV.read('./data/items.csv', headers: true, header_converters: :symbo
 
 item_csv.each do |line|
   Item.create!(id: line[:id],
-                   name: line[:name],
-                   description: line[:description],
-                   unit_price: line[:unit_price],
-                   merchant_id: line[:merchant_id],
-                   image: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg',
-                   created_at: line[:created_at],
-                   updated_at: line[:updated_at])
+               name: line[:name],
+               description: line[:description],
+               unit_price: line[:unit_price],
+               merchant_id: line[:merchant_id],
+               image: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg',
+               created_at: line[:created_at],
+               updated_at: line[:updated_at])
 end
 
 invoice_csv = CSV.read('./data/invoices.csv', headers: true, header_converters: :symbol)
