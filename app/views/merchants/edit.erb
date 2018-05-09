@@ -1,9 +1,14 @@
-<h1> Edit <%= @merchant.name %></h1>
+<header>
+  <h1> Edit <%= @merchant.name %></h1>
+</header>
+<main>
+  <form class="edit-merchant" action="/merchants/<%= @merchant.id %>" method="post">
+    <input type="hidden" name="_method" value="PUT">
 
-<form class="edit-merchant" action="/merchants/<%= @merchant.id %>" method="post">
-  <input type="hidden" name="_method" value="PUT">
-  <p> Name </p>
-  <input type="text" name="merchant[name]" placeholder="<%= @merchant.name %>">
-  <a href="/merchants"><button>Cancel</button></a>
-  <input type="submit" value="Update Merchant">
-</form>
+    <p> Name </p>
+    <input type="text" name="merchant[name]" placeholder="<%= @merchant.name %>">
+    
+    <a href="/merchants"><button>Cancel</button></a>
+    <input type="submit" value="Update Merchant">
+  </form>
+</main>

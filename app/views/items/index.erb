@@ -1,11 +1,15 @@
-<a href="/items-dashboard">Dashboard</a>
-<h1>Items</h1>
-<a href="/items/new"><button>Create A New Item</button></a>
+<header>
+  <a href="/items-dashboard">Dashboard</a>
+  <h1>Items</h1>
+  <a href="/items/new"><button>Create A New Item</button></a>
+</header>
 
-<% @items.each do |item| %>
-<div class="item">
-  <img src="<%= item.image %>" alt="">
-  <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
-  <p>$<%= '%.2f' % (item.unit_price.to_f/100) %></p>
-</div>
-<% end %>
+<main class="all-items">
+  <% @items.each do |item| %>
+  <article class="item-index">
+    <img src="<%= item.image %>" alt="">
+    <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
+    <p>$<%= '%.2f' % (item.unit_price.to_f/100) %></p>
+  </article>
+  <% end %>
+</main>

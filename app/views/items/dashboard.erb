@@ -1,21 +1,24 @@
-<h1>Items Dashboard</h1>
+<header>
+  <h1>Items Dashboard</h1>
+</header>
+<main>
+  <article>
+    <h2>Total Item Count</h2>
+    <h1><%= @count %></h1>
+  </article>
 
-<section class="dashboard">
-  <h3>Total Item Count</h3>
-  <h1><%= @count %></h1>
-</section>
+  <article>
+    <h2>Avg Price Per Item</h2>
+    <h1>$<%= '%.2f' % @average %></h1>
+  </article>
 
-<section class="dashboard">
-  <h3>Avg Price Per Item</h3>
-  <h1>$<%= '%.2f' % @average %></h1>
-</section>
-
-<section class="dashboard">
-  <h3>Item by Age</h3>
-  <h4>Newest</h4>
-  <p>Item:</p>
-  <a href="/items/<%= @newest.id %>" ><%= @newest.name %></a>
-  <h4>Oldest</h4>
-  <p>Item:</p>
-  <a href="/items/<%= @oldest.id %>"><%= @oldest.name %></a>
-</section>
+  <article>
+    <h2>Item by Age</h2>
+    <h3>Newest</h3>
+    <h4>Item:</h4>
+    <h4><a href="/items/<%= @newest.id %>" ><%= @newest.name %></a></h4>
+    <h3>Oldest</h3>
+    <h4>Item:</h4>
+    <h4><a href="/items/<%= @oldest.id %>"><%= @oldest.name %></a></h4>
+  </article>
+</main>

@@ -5,12 +5,13 @@
 <main>
   <form class="edit-invoice" action="/invoices/<%= @invoice.id %>" method="post">
     <input type="hidden" name="_method" value="PUT">
+
     <p>Merchant</p>
     <select class="merchant-dropdown" name="Merchants" disabled = true>
       <option value="<%= @merchant.id %>"><%= @merchant.name %></option>
     </select>
-    <p>Status</p>
 
+    <p>Status</p>
     <% statuses = ["pending", "shipped", "returned"] %>
     <select class="status-dropdown" name="invoice[status]">
       <% statuses.each do |status| %>
@@ -21,6 +22,7 @@
         <% end %>
       <% end %>
     </select>
+
     <a href="/invoices"><button>Cancel</button></a>
     <input type="submit" value="Update Invoice">
   </form>
