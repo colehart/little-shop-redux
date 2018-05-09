@@ -23,6 +23,8 @@ RSpec.describe 'A user visits edit item page' do
 
     expect(page).to have_content(description)
     click_button('Update Item')
+
+    # MODEL TEST
     item1 = Item.find(item.id)
     expect(item1.name).to eq(new_name)
     expect(item1.description).to eq(description)
