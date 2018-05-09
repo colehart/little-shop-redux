@@ -1,19 +1,30 @@
-<h1>Create New Item</h1>
-<form class="" action="/items" method="post">
-  <p>Merchant</p>
-  <select class="merchant-dropdown" name="item[merchant_id]">
-  <% @merchants.each do |merchant| %>
-    <option value="<%= merchant.id %>"><%= merchant.name %></option>
-    <% end %>
-  </select>
-  <p>Title</p>
-  <input type="text" name="item[name]" value="" placeholder="Title">
-  <p>Description</p>
-  <textarea name="item[description]" value="" placeholder="Your description here."></textarea>
-  <p>Price</p>
-  <input type="integer" name="item[unit_price]" value="" placeholder="Ex: '999' for '$9.99'">
-  <p>Image URL</p>
-  <input type="text" name="item[image]" value="" placeholder="Your image url here.">
-  <a href="/items"> <button>Cancel</button></a>
-  <input type="submit" value="Create Item">
-</form>
+<header>
+  <h1>Create New Item</h1>
+</header>
+
+<main>
+  <form class="" action="/items" method="post">
+
+    <p>Merchant</p>
+    <select class="merchant-dropdown" name="item[merchant_id]">
+    <% @merchants.each do |merchant| %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
+
+    <p>Title</p>
+    <input type="text" name="item[name]" value="" placeholder="Title">
+
+    <p>Description</p>
+    <textarea name="item[description]" value="" placeholder="Your description here."></textarea>
+
+    <p>Price</p>
+    <input type="integer" name="item[unit_price]" value="" placeholder="Ex: '999' for '$9.99'">
+
+    <p>Image URL</p>
+    <input type="text" name="item[image]" value="" placeholder="Your image url here.">
+
+    <a href="/items"><button>Cancel</button></a>
+    <input type="submit" value="Create Item">
+  </form>
+</main>

@@ -2,6 +2,10 @@
 class LittleShopApp < Sinatra::Base
   set :method_override, true
 
+  get '/' do
+    redirect '/index.html'
+  end
+
   get '/merchants' do
     @merchants = Merchant.order_by_id
     erb :"merchants/index"

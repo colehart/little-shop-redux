@@ -1,12 +1,22 @@
-<h1><%= @item.name %></h1>
-<a href="/items/<%= @item.id %>/edit"><button>Edit</button></a>
-<form action="/items/<%= @item.id %>" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete"/>
-</form>
+<header class="has-button-below">
+  <h1><%= @item.name %></h1>
+  <div class="edit-buttons-group">
+    <a href="/items/<%= @item.id %>/edit"><button class="submit-button">Edit</button></a>
+    <form class="delete-button" action="/items/<%= @item.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input class="cancel-button" type="submit" value="Delete"/>
+    </form>
+  </div>
+</header>
 
-<h3><a href="/merchants/<%= @merchant.id %>"><%= @merchant.name %></a></h3>
-<img src="<%= @item.image %>" alt="">
-<h3><%= @item.name %></h3>
-<p>$<%= '%.2f' % (@item.unit_price.to_f/100) %></p>
-<p><%= @item.description %></p>
+<main>
+  <article class="item-show">
+    <h2><a href="/merchants/<%= @merchant.id %>"><%= @merchant.name %></a></h2>
+    <img src="<%= @item.image %>" alt="">
+  </article>
+  <article class="item-show">
+    <h2><%= @item.name %></h2>
+    <p>$<%= '%.2f' % (@item.unit_price.to_f/100) %></p>
+    <p><%= @item.description %></p>
+  </article>
+</main>

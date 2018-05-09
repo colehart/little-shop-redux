@@ -1,12 +1,29 @@
-<a href="/merchants-dashboard">Dashboard</a>
-<h1>Merchants</h1>
-<a href="/merchants/new" class="button">Create A New Merchant</a>
+<header class="has-dashboard-link">
+  <a href="/merchants-dashboard">Dashboard</a>
+  <h1>Merchants</h1>
+  <div class="create-button-header">
+    <a href="/merchants/new"><button class="create-button>">Create A New Merchant</button></a>
+  </div>
+</header>
 
-<% @merchants.each do |merchant| %>
-  <h3><a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a></h3>
-  <a href="/merchants/<%= merchant.id  %>/edit"><button>Edit</button></a>
-  <form action="/merchants/<%= merchant.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"/>
-  </form>
-<% end %>
+<main>
+  <section class="table" id="merchant-index-table" aria-label="merchant_list">
+    <table>
+      <tbody>
+        <% @merchants.each do |merchant| %>
+        <tr>
+          <td><a class="index-invoice" href="/merchants/<%= merchant.id %>"><%= merchant.name %></a>
+          <aside class="edit-buttons-in-row">
+            <a href="/merchants/<%= merchant.id  %>/edit"><button class="submit-button">Edit</button></a>
+            <form class="delete-button" action="/merchants/<%= merchant.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class="cancel-button" type="submit" value="Delete"/>
+            </form>
+          </aside>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</main>

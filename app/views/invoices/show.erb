@@ -1,10 +1,12 @@
-<header>
+<header class="has-button-below">
   <h1>Invoice: <%= @invoice.id %> - <%= @invoice.status.capitalize %></h1>
-  <a href="/invoices/<%= @invoice.id  %>/edit"><button>Edit</button></a>
-  <form action="/invoices/<%= @invoice.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"/>
-  </form>
+  <div class="edit-buttons-group">
+    <a href="/invoices/<%= @invoice.id  %>/edit"><button class="submit-button">Edit</button></a>
+    <form class="delete-button" action="/invoices/<%= @invoice.id %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input class="cancel-button" type="submit" value="Delete"/>
+    </form>
+  </div>
 </header>
 
 <main>
@@ -28,10 +30,8 @@
       </tr>
     <% end %>
     </tbody>
-    <tfoot>
-      <tr>
-        <td>Total Price: $<%= '%.2f' % (@invoice.total_price.to_f/100) %></td>
-      </tr>
-    </tfoot>
   </table>
+  <article class="total-price">
+    <h3>Total Price: $<%= '%.2f' % (@invoice.total_price.to_f/100) %></h3>
+  </article>
 </main>
