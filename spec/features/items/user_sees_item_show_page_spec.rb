@@ -21,7 +21,7 @@ RSpec.describe 'A user visits a single item page' do
     expect(current_path).to eq("/items/#{item.id}/edit")
   end
 
-  it 'can go to edit item page' do
+  it 'can delete from item show page' do
     merchant = Merchant.create(name: 'borks r us')
     item = Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
     visit "/items/#{item.id}"

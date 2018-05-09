@@ -11,7 +11,10 @@
         <tr>
           <td><a class="index-invoice" href="/invoices/<%= invoice.id %>"><%= invoice.id %></a>
             <aside class="edit-buttons-in-row">
-              <a href="/invoices/<%= invoice.id  %>/edit"><button class="submit-button">Edit</button></a><form class="delete-button" action="/invoices/<%= invoice.id %>" method="POST"><input type="hidden" name="_method" value="DELETE"><input class="cancel-button" type="submit" value="Delete"/>
+              <a href="/invoices/<%= invoice.id  %>/edit"><button class="submit-button">Edit</button></a>
+              <form class="delete-button" action="/invoices/<%= invoice.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="cancel-button" type="submit" value="Delete"/>
               </form>
             </aside>
           </td>

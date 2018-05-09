@@ -9,11 +9,9 @@
     <p>Merchant</p>
     <select class="merchant-dropdown" name="item[merchant_id]">
       <% @merchants.each do |merchant| %>
-        <% if @item.merchant.id != merchant.id %>
-          <option value="<%= merchant.id %>"><%= merchant.name %></option>
-        <% else %>
-          <option value="<%= merchant.id %>" selected><%= merchant.name %></option>
-        <% end %>
+          <option value="<%= merchant.id %>"
+            <% if @item.merchant.id == merchant.id %>selected<%end%>
+          ><%= merchant.name %></option>
       <% end %>
     </select>
 

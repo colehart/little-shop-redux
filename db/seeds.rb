@@ -19,7 +19,7 @@ item_csv.each do |line|
   Item.create!(id: line[:id],
                name: line[:name],
                description: line[:description],
-               unit_price: line[:unit_price],
+               unit_price: line[:unit_price].to_f / 100,
                merchant_id: line[:merchant_id],
                image: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg',
                created_at: line[:created_at],

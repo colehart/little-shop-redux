@@ -17,10 +17,12 @@ class Item < ActiveRecord::Base
   end
 
   def self.newest
-    all.max_by(&:created_at)
+    all.order('created_at desc').limit(1)[0]
+    # all.max_by(&:created_at)
   end
 
   def self.oldest
-    all.min_by(&:created_at)
+    all.order('created_at asc').limit(1)[0]
+    # all.min_by(&:created_at)
   end
 end

@@ -1,13 +1,8 @@
 RSpec.describe 'A user visits items page' do
-  it 'shows a headline of items' do
+  it 'shows expected elements on items index page' do
     visit '/items'
 
     expect(page).to have_content('Items')
-  end
-
-  it 'has a link to create a new item' do
-    visit '/items'
-
     expect(page).to have_content('Create A New Item')
   end
 
@@ -42,6 +37,7 @@ RSpec.describe 'A user visits items page' do
   it 'links to item dashboard page' do
     merchant = Merchant.create(name: 'borks r us')
     Item.create(name: 'bork', description: 'totally borked it', unit_price: 666, merchant_id: merchant.id, image: 'borkface.jpeg')
+
     visit '/items'
 
     click_link('Dashboard')
