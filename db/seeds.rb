@@ -21,7 +21,7 @@ item_csv.each do |line|
                    description: line[:description],
                    unit_price: line[:unit_price],
                    merchant_id: line[:merchant_id],
-                   image: 'http://s.newsweek.com/sites/www.newsweek.com/files/styles/lg/public/2011/10/16/1337256000000.cached_19.jpg',
+                   image: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/impossibly-cute-puppy-2.jpg',
                    created_at: line[:created_at],
                    updated_at: line[:updated_at])
 end

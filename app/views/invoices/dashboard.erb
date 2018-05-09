@@ -3,40 +3,54 @@
 </header>
 
 <main>
-  <article id="status_percentages">
+  <article id="status-percentages">
     <h2>Status Percentages</h2>
-    <h3>Pending</h3>
-    <h3><%= @pending %>%</h3>
-    <h3>Shipped</h3>
-    <h3><%= @shipped %>%</h3>
-    <h3>Returned</h3>
-    <h3><%= @returned %>%</h3>
+    <div>
+      <h3>Pending</h3>
+      <h3><%= @pending %>%</h3>
+    </div>
+    <div>
+      <h3>Shipped</h3>
+      <h3><%= @shipped %>%</h3>
+    </div>
+    <div>
+      <h3>Returned</h3>
+      <h3><%= @returned %>%</h3>
+    </div>
   </article>
 
-  <article id="unit_prices">
+  <article class="invoices-dashboard">
     <h2>Unit Prices</h2>
     <section class="highest">
       <h3>Highest</h3>
-      <h4>Invoice:</h4>
-      <h4><a href="/invoices/<%= @highest_unit_price.id %>"><%= @highest_unit_price.id %></a></h4>
+      <div>
+        <h4>Invoice:</h4>
+        <h4><a href="/invoices/<%= @highest_unit_price.id %>"><%= @highest_unit_price.id %></a></h4>
+      </div>
     </section>
     <section class="lowest">
       <h3>Lowest</h3>
-      <h4>Invoice:</h4>
-      <h4><a href="/invoices/<% @lowest_unit_price.id %>"><%= @lowest_unit_price.id %></a></h4>
+      <div>
+        <h4>Invoice:</h4>
+        <h4><a href="/invoices/<% @lowest_unit_price.id %>"><%= @lowest_unit_price.id %></a></h4>
+      </div>
     </section>
   </article>
-  
-  <article id="quantity">
+
+  <article class="invoices-dashboard">
     <h2>Quantity</h2>
     <section class="highest">
       <h3>Highest</h3>
-      <h4>Invoice:</h4>
-      <h4><a href="/invoices/<%= @highest_quantity.id %>"><%= @highest_quantity.id %></a></h4>
+      <div>
+        <h4>Invoice:</h4>
+        <h4><a href="/invoices/<%= @highest_quantity.id %>"><%= @highest_quantity.id %></a></h4>
+      </div>
     </section>
     <section class="lowest">
       <h3>Lowest</h3>
-      <h4>Invoice:</h4>
-      <h4><a href="/invoices/<% @lowest_quantity.id %>"><%= @lowest_quantity.id %></a></h4>
+      <div>
+        <h4>Invoice:</h4>
+        <h4><a href="/invoices/<% @lowest_quantity.id %>"><%= @lowest_quantity.id %></a></h4>
+      </div>
   </article>
 </main>
